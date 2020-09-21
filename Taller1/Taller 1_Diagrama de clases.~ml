@@ -153,7 +153,7 @@
 <XPD:ATTR name="Left" type="integer">616</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">260</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">183</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">69</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">82</XPD:ATTR>
 <XPD:REF name="Model">LZHUKkMeVEaLwTXP03WAKAAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="09YJt6WtiUyYysUF8l22vAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="DNXd/TwbXEONJm5PXubyUwAA">
@@ -435,7 +435,7 @@
 <XPD:OBJ name="OwnedViews[13]" type="UMLGeneralizationView" guid="2ICs+h1j1UOJ1/wAS6mypgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">708,260;711,192</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">709,260;712,192</XPD:ATTR>
 <XPD:REF name="Model">jdyse6lWLEWw51T/gEURVAAA</XPD:REF>
 <XPD:REF name="Head">E2PHHULSf0+ypL75G/B2zQAA</XPD:REF>
 <XPD:REF name="Tail">aefhffqOy0iGbIcmaXKTjwAA</XPD:REF>
@@ -492,7 +492,7 @@
 <XPD:OBJ name="OwnedViews[15]" type="UMLAssociationView" guid="Hf2LdzqbA0CbpG+/vyTNKwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">616,293;558,292</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">616,296;558,293</XPD:ATTR>
 <XPD:REF name="Model">Q5Cv00XOMUqtpNi4hg8KRwAA</XPD:REF>
 <XPD:REF name="Head">b5ycg+/8qkyYvEsLjuMqngAA</XPD:REF>
 <XPD:REF name="Tail">aefhffqOy0iGbIcmaXKTjwAA</XPD:REF>
@@ -983,13 +983,17 @@
 <XPD:REF name="Views[3]">6gNYIUWCgEyQk59KZ+QvzQAA</XPD:REF>
 <XPD:ATTR name="#Generalizations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Generalizations[0]">jdyse6lWLEWw51T/gEURVAAA</XPD:REF>
-<XPD:ATTR name="#Operations" type="integer">2</XPD:ATTR>
+<XPD:ATTR name="#Operations" type="integer">3</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="70QeEVYdJE+nuj+CHAu48QAA">
 <XPD:ATTR name="Name" type="string">Consultar los estados operativos</XPD:ATTR>
 <XPD:REF name="Owner">LZHUKkMeVEaLwTXP03WAKAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Operations[1]" type="UMLOperation" guid="53v0lsatnU+49/EmRRmcoAAA">
 <XPD:ATTR name="Name" type="string">Consultar los equipos</XPD:ATTR>
+<XPD:REF name="Owner">LZHUKkMeVEaLwTXP03WAKAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Operations[2]" type="UMLOperation" guid="24cf66OI7kCrplN5pSms0wAA">
+<XPD:ATTR name="Name" type="string">Arrendar salas</XPD:ATTR>
 <XPD:REF name="Owner">LZHUKkMeVEaLwTXP03WAKAAA</XPD:REF>
 </XPD:OBJ>
 <XPD:ATTR name="#Associations" type="integer">3</XPD:ATTR>
