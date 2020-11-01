@@ -25,20 +25,29 @@ public class Controlador implements ActionListener{
         Prueba();        
     }
     
-    public ResultSet crearQuery(String query) throws SQLException{
-	return stmt.executeQuery(query);
+    public ResultSet Consultar(String datos) throws SQLException{
+	return stmt.executeQuery("SELECT " + datos + " FROM Equipos");
     }
+    
+    public ResultSet consultarSi(String datos, String criterio, String condicion) throws SQLException{
+	return stmt.executeQuery("SELECT " + datos + " FROM Equipos WHERE " + criterio + " = " + condicion);        
+    }
+    
     
     private void Prueba() throws SQLException{
         String algo = "";
-        ResultSet rs = crearQuery("SELECT nombre FROM autores");
+        ResultSet listar = Consultar("idEquipo, tipo, marca, año");
+        //ResultSet estado = Consultar("estado");
+        //ResultSet buscar = consultarSi("tipo","idEquipo","103");
         
-        while (rs.next()) {
-		String name = rs.getString("nombre");
+        while (listar.next()) {
 		//float price = rs.getFloat("precio");
-		algo = algo + "\n " + name;
+		algo = algo + "\n " + listar.getString("idEquipo");
 	}
         
+        ResultSet buscar = consultarSi("tipo","idEquipo","103");
+        buscar.next();
+        algo = algo + " " + buscar.getString("tipo");
         form.getjLabel2().setText(algo);
     }
     
