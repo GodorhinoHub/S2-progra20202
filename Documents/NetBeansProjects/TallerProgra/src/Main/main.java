@@ -12,7 +12,7 @@ public class main {
         InicioSesion forma = new InicioSesion();
         Conexion conect = new Conexion("instituto","standart","1234standart"); //"instituto","standart","1234standart"
         
-        control = new Controlador(conect, forma);
-        control.Iniciar();
+        control = new Controlador(conect);
+        control.Iniciar(forma);
     }
 }

@@ -6,24 +6,30 @@ import java.awt.event.*;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.*;
+import javax.swing.JFrame;
 
 public class Controlador implements ActionListener{
-    private final InicioSesion form;
     private final Connection conect;
+    private JFrame form;
+    private Statement stmt;
     private Administrador adm;
     private Profesor profe;
     private Encargado enc;
     private String sesion;
-    private Statement stmt;
     
     // Constructor
-    public Controlador(Conexion conex, InicioSesion form) throws ClassNotFoundException, SQLException {
-        this.form = form;
+    public Controlador(Conexion conex) throws ClassNotFoundException, SQLException {
         this.conect = conex.getConection();
     }
     
-    // Functions
-    public void Iniciar() throws ClassNotFoundException, SQLException{
+    // Getters
+    public JFrame getForm() {
+        return form;
+    }
+    
+    // Setters
+    public void Iniciar(JFrame form) throws ClassNotFoundException, SQLException{
+        this.form = form;
         this.form.setTitle("Profe pongame 7");
         this.form.setLocationRelativeTo(null);
         this.form.setVisible(true);
@@ -32,6 +38,25 @@ public class Controlador implements ActionListener{
         Prueba();        
     }
     
+    public void Cerrar() throws SQLException{
+        this.form.dispose();
+        stmt.close();
+    }
+    
+    public void setSesionActual(Administrador adm){
+        this.sesion = "adm";
+        this.adm = adm;
+    }
+    public void setSesionActual(Profesor profe){
+        this.sesion = "profe";
+        this.profe = profe;
+    }
+    public void setSesionActual(Encargado enc){
+        this.sesion = "enc";
+        this.enc = enc;
+    }
+    
+    // Functions
     public boolean IniciarSesion(String rut, String clave){
         String apellido;
         String nombre;
@@ -70,19 +95,6 @@ public class Controlador implements ActionListener{
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    }
-    
-    public void setSesionActual(Administrador adm){
-        this.sesion = "adm";
-        this.adm = adm;
-    }
-    public void setSesionActual(Profesor profe){
-        this.sesion = "profe";
-        this.profe = profe;
-    }
-    public void setSesionActual(Encargado enc){
-        this.sesion = "enc";
-        this.enc = enc;
     }
     
     public ResultSet Consultar(String datos, String tabla){
