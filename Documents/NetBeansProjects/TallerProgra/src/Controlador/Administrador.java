@@ -16,15 +16,21 @@ public class Administrador extends Usuario {
     
     // Funtion
     public boolean registrarUsuario(Usuario usuario){
+        int insert;
         ResultSet exists = con.consultarSi("apellido", "Usuarios", "rut", '\'' + usuario.getRut() + '\'');
         try {
             if (exists.next()) {
                 System.out.println("Usuario ya existe");
                 return false;
             }else{
-                con.Insertar("Usuarios", usuario.toString());
-                System.out.println("Usuario creado con éxito");
-                return true;
+                insert = con.Insertar("Usuarios", usuario.toString());
+                if (insert != 0) {
+                    System.out.println("Usuario creado con éxito");
+                    return true;
+                } else{
+                    System.out.println("Error al crear el usuario");
+                    return false;
+                }
             }
         } catch (SQLException ex) {
             System.out.println("Error al comprobar si existe el usuario");
@@ -78,13 +84,17 @@ public class Administrador extends Usuario {
         int delet;
         ResultSet exists = con.consultarSi("rut", "Usuarios", "rut", '\'' + rut + '\'');
         try {
-            exists.next();
-            delet = con.Eliminar("Usuarios", "rut", '\'' + rut + '\'');
-            if(delet != 0){
-                System.out.println("Borrado exitoso");
-                return true;
+            if(exists.next()){
+                delet = con.Eliminar("Usuarios", "rut", '\'' + rut + '\'');
+                if(delet != 0){
+                    System.out.println("Borrado exitoso");
+                    return true;
+                }else{
+                    System.out.println("No se pudo borrar");
+                    return false;
+                }
             }else{
-                System.out.println("No se pudo borrar");
+                System.out.println("Usuario no existe");
                 return false;
             }
         } catch (SQLException ex) {
@@ -94,7 +104,33 @@ public class Administrador extends Usuario {
         }
     }
     
-    public void actualizarUsuario(Usuario usuario){
-        
+    public boolean actualizarUsuario(Usuario usuario){
+        int update;
+        ResultSet exists = con.consultarSi("apellido", "Usuarios", "rut", '\'' + usuario.getRut() + '\'');
+        try {
+            if(exists.next()){
+                update = con.Actualizar("Usuarios",
+                            "apellido = \'" + usuario.getApellido() + '\'' +
+                            ",nombre = \'" + usuario.getNombre() + '\'' +
+                            ",correo = \'" + usuario.getCorreo() + '\'' +
+                            ",clave = \'" + usuario.getClave() + '\'' +
+                            ",cargo = \'" + usuario.getCargo() + '\'',
+                        "rut", '\'' + usuario.getRut() + '\'');
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Usuario no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el usuario");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 }

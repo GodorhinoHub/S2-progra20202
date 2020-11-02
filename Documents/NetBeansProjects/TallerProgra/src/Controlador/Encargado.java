@@ -74,8 +74,33 @@ public class Encargado extends Usuario{
         }
     }
     
-    public void actualizarEquipo(Equipo Equipo){
-        
+    public boolean actualizarEquipo(Equipo equipo){
+        int update;
+        ResultSet exists = con.consultarSi("idEquipo", "Equipos", "idEquipo", Integer.toString(equipo.getIdEquipo()));
+        try {
+            if(exists.next()){
+                update = con.Actualizar("Equipos",
+                            "tipo = \'" + equipo.getTipo()+ '\'' +
+                            ",marca = \'" + equipo.getMarca()+ '\'' +
+                            ",año = \'" + equipo.getAno()+ '\'' +
+                            ",estado = \'" + equipo.getEstado() + '\'',
+                        "idEquipo", Integer.toString(equipo.getIdEquipo()));
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Equipo no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el equipo");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     
     public boolean eliminarEquipo(int idEquipo){
@@ -98,8 +123,30 @@ public class Encargado extends Usuario{
         }
     }
     
-    public void actualizarEstado(int idEquipo){
-        
+    public boolean actualizarEstado(int idEquipo, char estado){
+        int update;
+        ResultSet exists = con.consultarSi("idEquipo", "Equipos", "idEquipo", Integer.toString(idEquipo));
+        try {
+            if(exists.next()){
+                update = con.Actualizar("Equipos",
+                            "estado = \'" + estado + '\'',
+                        "idEquipo", Integer.toString(idEquipo));
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Equipo no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el equipo");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     
     public String consultarEstados(){
@@ -135,7 +182,29 @@ public class Encargado extends Usuario{
         }
     }
     
-    public void actualizarSala(){
-        
+    public boolean actualizarSala(int idSala, char estado){
+        int update;
+        ResultSet exists = con.consultarSi("idSala", "Salas", "idSala", Integer.toString(idSala));
+        try {
+            if(exists.next()){
+                update = con.Actualizar("Salas",
+                            "estado = \'" + estado + '\'',
+                        "idSala", Integer.toString(idSala));
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Sala no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe la sala");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
 }

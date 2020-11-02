@@ -88,11 +88,11 @@ public class Controlador implements ActionListener{
         Profesor prof = new Profesor("Crastoso", "Fibonerto", "fcra@institucion.cl", "10653-4", "1234");
         Administrador admin = new Administrador("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
         
-        //Equipo equipo = new Equipo(115, "Impresora", "Cannon", 2017, 'n');
-        Usuario user = new Usuario("Miranda", "Valentina", "vmir@institucion.cl", "21850-0", "1234", 'e');
+        Equipo equipo = new Equipo(116, "Impresora", "Cannon", 2018, 'n');
+        Usuario user = new Usuario("Miranda", "Valentina", "vmir@institucion.cl", "21850-0", "1234", 'E');
         
         //Equipo e = enc.buscarEquipo("103");
-        boolean e = admin.eliminarUsuario("962140-4");
+        boolean e = enc.actualizarSala(505,'o');
         
         //int e = Insertar("Equipos","113, 'Computador', 'HP', 2009, 'o'");
         //int e = Actualizar("Equipos","estado = \'n\'","idEquipo","107");
