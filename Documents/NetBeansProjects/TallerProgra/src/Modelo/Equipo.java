@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
-/**
- *
- * @author Asus
- */
 public class Equipo {
     private int idEquipo;
     private String tipo;
@@ -62,6 +53,4 @@ public class Equipo {
     public void setEstado(char estado) {
         this.estado = estado;
     }
-    
-    // Functions
 }

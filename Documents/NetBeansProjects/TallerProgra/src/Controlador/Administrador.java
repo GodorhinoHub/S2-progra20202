@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Usuario;
+import Modelo.Equipo;
 
 public class Administrador extends Usuario {
     
