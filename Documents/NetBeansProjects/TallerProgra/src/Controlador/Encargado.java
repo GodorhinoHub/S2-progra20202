@@ -17,20 +17,21 @@ public class Encargado extends Usuario{
     
     // Functions
     public boolean registrarEquipo(Equipo equipo){
-        ResultSet exists = con.consultarSi("idEquipo", "Equipos", "idEquipo", '\'' + Integer.toString(equipo.getIdEquipo()) + '\'');
+        ResultSet exists = con.consultarSi("idEquipo", "Equipos", "idEquipo", Integer.toString(equipo.getIdEquipo()));
         try {
             if (exists.next()) {
                 System.out.println("Equipo ya existe");
                 return false;
+            }else{
+                con.Insertar("Equipos", equipo.toString());
+                System.out.println("Equipo creado con éxito");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println("Error al comprobar si existe el equipo");
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        con.Insertar("Equipos", equipo.toString());
-        System.out.println("Equipo creado con éxito");
-        return true;
     }
     
     public Equipo buscarEquipo(String idEquipo){
@@ -38,8 +39,8 @@ public class Encargado extends Usuario{
         String marca;
         int ano;
         char estado;
+        ResultSet equipo = con.consultarSi("idEquipo, tipo, marca, año, estado", "Equipos", "idEquipo", idEquipo);
         try {
-            ResultSet equipo = con.consultarSi("idEquipo, tipo, marca, año, estado", "Equipos", "idEquipo", idEquipo);
             equipo.next();
             tipo = equipo.getString("tipo");
             marca = equipo.getString("marca");
@@ -54,9 +55,9 @@ public class Encargado extends Usuario{
     }
     
     public String listarEquipos(){
+        String lista = "";
+        ResultSet listar = con.Consultar("idEquipo, tipo, marca, año, estado", "Equipos");
         try{
-            String lista = "";
-            ResultSet listar = con.Consultar("idEquipo, tipo, marca, año, estado", "Equipos");
             while (listar.next()) {
 		lista = lista + "\n " + new Equipo(listar.getInt("idEquipo"),
                         listar.getString("tipo"),
@@ -77,8 +78,24 @@ public class Encargado extends Usuario{
         
     }
     
-    public void eliminarEquipo(int idEquipo){
-        
+    public boolean eliminarEquipo(int idEquipo){
+        int delet;
+        ResultSet exists = con.consultarSi("idEquipo", "Equipos", "idEquipo", Integer.toString(idEquipo));
+        try {
+            exists.next();
+            delet = con.Eliminar("Equipos", "idEquipo", Integer.toString(idEquipo));
+            if(delet != 0){
+                System.out.println("Borrado exitoso");
+                return true;
+            }else{
+                System.out.println("No se pudo borrar");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el equipo");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     
     public void actualizarEstado(int idEquipo){
@@ -86,9 +103,9 @@ public class Encargado extends Usuario{
     }
     
     public String consultarEstados(){
+        String lista = "";
+        ResultSet listar = con.Consultar("idEquipo, estado", "Equipos");
         try{
-            String lista = "";
-            ResultSet listar = con.Consultar("idEquipo, estado", "Equipos");
             while (listar.next()) {
 		lista = lista + "\n ID " + 
                         listar.getString("idEquipo") + " = " + listar.getString("estado").charAt(0);
@@ -102,9 +119,9 @@ public class Encargado extends Usuario{
     }
     
     public String listarSalas(){
+        String lista = "";
+        ResultSet listar = con.Consultar("idSala, estado", "Salas");
         try{
-            String lista = "";
-            ResultSet listar = con.Consultar("idSala, estado", "Salas");
             while (listar.next()) {
 		lista = lista + "\n " + new Sala(listar.getInt("idSala"),
                         listar.getString("estado").charAt(0))

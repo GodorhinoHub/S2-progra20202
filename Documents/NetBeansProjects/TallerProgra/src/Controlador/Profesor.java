@@ -17,9 +17,9 @@ public class Profesor extends Usuario{
     
     // Functions
     public String consultarEstados(){
-        try{
-            String lista = "";
-            ResultSet listar = con.Consultar("idEquipo, estado", "Equipos");        
+        String lista = "";
+        ResultSet listar = con.Consultar("idEquipo, estado", "Equipos"); 
+        try{       
             while (listar.next()) {
 		lista = lista + "\n ID " + 
                         listar.getString("idEquipo") + " = " + listar.getString("estado").charAt(0);
@@ -33,8 +33,8 @@ public class Profesor extends Usuario{
     }
     
     public String consultarEquipo(String idEquipo){
+        ResultSet equipo = con.consultarSi("estado", "Equipos", "idEquipo", idEquipo);
         try {
-            ResultSet equipo = con.consultarSi("estado", "Equipos", "idEquipo", idEquipo);
             equipo.next();
             return "Estado del equipo "+ idEquipo + " = " + equipo.getString("estado").charAt(0);
         } catch(SQLException ex){
@@ -45,9 +45,9 @@ public class Profesor extends Usuario{
     }
     
     public String consultarSalas(){
+        String lista = "";
+        ResultSet listar = con.Consultar("idSala, estado", "Salas");
         try{
-            String lista = "";
-            ResultSet listar = con.Consultar("idSala, estado", "Salas");
             while (listar.next()) {
 		lista = lista + "\n " + new Sala(listar.getInt("idSala"),
                         listar.getString("estado").charAt(0))

@@ -21,15 +21,16 @@ public class Administrador extends Usuario {
             if (exists.next()) {
                 System.out.println("Usuario ya existe");
                 return false;
+            }else{
+                con.Insertar("Usuarios", usuario.toString());
+                System.out.println("Usuario creado con éxito");
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println("Error al comprobar si existe el usuario");
             Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        con.Insertar("Usuarios", usuario.toString());
-        System.out.println("Usuario creado con éxito");
-        return true;
     }
     
     public Usuario buscarUsuario(String rut){
@@ -37,8 +38,8 @@ public class Administrador extends Usuario {
         String nombre;
         String correo;
         char cargo;
+        ResultSet usuario = con.consultarSi("apellido, nombre, correo, cargo", "Usuarios", "rut", '\'' + rut + '\'');
         try {
-            ResultSet usuario = con.consultarSi("apellido, nombre, correo, cargo", "Usuarios", "rut", '\'' + rut + '\'');
             usuario.next();
             apellido = usuario.getString("apellido");
             nombre = usuario.getString("nombre");
@@ -54,8 +55,8 @@ public class Administrador extends Usuario {
     
     public String listarUsuarios(){
         String lista = "";
+        ResultSet listar = con.Consultar("apellido, nombre, correo, rut, cargo", "Usuarios");
         try {
-            ResultSet listar = con.Consultar("apellido, nombre, correo, rut, cargo", "Usuarios");
             while (listar.next()) {
                 lista = lista + "\n " + new Usuario(listar.getString("apellido"),
                         listar.getString("nombre"),
@@ -73,8 +74,24 @@ public class Administrador extends Usuario {
         }
     }
     
-    public void eliminarUsuario(String rut){
-        
+    public boolean eliminarUsuario(String rut){
+        int delet;
+        ResultSet exists = con.consultarSi("rut", "Usuarios", "rut", '\'' + rut + '\'');
+        try {
+            exists.next();
+            delet = con.Eliminar("Usuarios", "rut", '\'' + rut + '\'');
+            if(delet != 0){
+                System.out.println("Borrado exitoso");
+                return true;
+            }else{
+                System.out.println("No se pudo borrar");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el usuario");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     
     public void actualizarUsuario(Usuario usuario){
