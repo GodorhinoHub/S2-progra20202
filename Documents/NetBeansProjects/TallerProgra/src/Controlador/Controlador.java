@@ -28,9 +28,9 @@ public class Controlador implements ActionListener{
         Prueba();        
     }
     
-    public ResultSet Consultar(String datos) throws SQLException{
+    public ResultSet Consultar(String datos, String tabla) throws SQLException{
         try{
-            return stmt.executeQuery("SELECT " + datos + " FROM Equipos");
+            return stmt.executeQuery("SELECT " + datos + " FROM " + tabla);
         } catch (SQLException e){
             System.out.println("Error en la query");
             return null;
@@ -48,9 +48,13 @@ public class Controlador implements ActionListener{
     
     
     private void Prueba() throws SQLException{
-        Encargado en = new Encargado("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
-        Equipo e = en.buscarEquipo("103");
-        System.out.println(e.toString());
+        Encargado enc = new Encargado("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
+        Profesor prof = new Profesor("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
+        Administrador admin = new Administrador("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
+        
+        //Equipo e = en.buscarEquipo("103");
+        String e = enc.listarEquipos();
+        System.out.println(e);
         
         /*
         String algo = "";
