@@ -1,12 +1,12 @@
 import java.sql.*;
 import Controlador.Controlador;
 import Modelo.Conexion;
-import Vista.Vista;
+import Vista.InicioSesion;
 
 public class main {
       
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
-        Vista forma = new Vista();
+        InicioSesion forma = new InicioSesion();
         Conexion conect = new Conexion("instituto","standart","1234standart"); //"instituto","standart","1234standart"
         
         

@@ -1,17 +1,16 @@
 package Controlador;
 
-import java.awt.*;
 import Modelo.*;
 import Vista.*;
 import java.awt.event.*;
 import java.sql.*;
 
 public class Controlador implements ActionListener{
-    private final Vista form;
+    private final InicioSesion form;
     private final Connection conect;
     private Statement stmt;
 
-    public Controlador(Conexion conex, Vista form) throws ClassNotFoundException, SQLException {
+    public Controlador(Conexion conex, InicioSesion form) throws ClassNotFoundException, SQLException {
         this.form = form;
         this.conect = conex.getConection();
     }
@@ -26,11 +25,21 @@ public class Controlador implements ActionListener{
     }
     
     public ResultSet Consultar(String datos) throws SQLException{
-	return stmt.executeQuery("SELECT " + datos + " FROM Equipos");
+        try{
+            return stmt.executeQuery("SELECT " + datos + " FROM Equipos");
+        } catch (SQLException e){
+            System.out.println("Error en la query");
+            return null;
+        }
     }
     
     public ResultSet consultarSi(String datos, String criterio, String condicion) throws SQLException{
-	return stmt.executeQuery("SELECT " + datos + " FROM Equipos WHERE " + criterio + " = " + condicion);        
+        try{
+            return stmt.executeQuery("SELECT " + datos + " FROM Equipos WHERE " + criterio + " = " + condicion);
+        } catch (SQLException e){
+            System.out.println("Error en la query");
+            return null;
+        }      
     }
     
     
