@@ -10,6 +10,10 @@ import java.util.logging.*;
 public class Controlador implements ActionListener{
     private final InicioSesion form;
     private final Connection conect;
+    private Administrador adm;
+    private Profesor profe;
+    private Encargado enc;
+    private String sesion;
     private Statement stmt;
     
     // Constructor
@@ -26,6 +30,59 @@ public class Controlador implements ActionListener{
         stmt = this.conect.createStatement();
         
         Prueba();        
+    }
+    
+    public boolean IniciarSesion(String rut, String clave){
+        String apellido;
+        String nombre;
+        String correo;
+        ResultSet usuario = consultarSi("apellido, nombre, correo, clave, cargo", "Usuarios", "rut", '\'' + rut + '\'');
+        try {
+            if (usuario.next()) {
+                if (usuario.getString("clave").equals(clave)) {
+                    apellido = usuario.getString("apellido");
+                    nombre = usuario.getString("nombre");
+                    correo = usuario.getString("correo");
+                    switch (usuario.getString("cargo")){
+                            case "A":
+                                setSesionActual(new Administrador(apellido, nombre, correo, rut, clave));
+                                return true;
+                            case "P":
+                                setSesionActual(new Profesor(apellido, nombre, correo, rut, clave));
+                                return true;
+                            case "E":
+                                setSesionActual(new Encargado(apellido, nombre, correo, rut, clave));
+                                return true;
+                            default:
+                                System.out.println("Usuario no dispone de cargos, llame a TI y vea el espectáculo");
+                                return false;
+                    }
+                }else{
+                    System.out.println("Clave incorrecta");
+                    return false;
+                }
+            }else{
+                System.out.println("Usuario no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar usuario");
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    public void setSesionActual(Administrador adm){
+        this.sesion = "adm";
+        this.adm = adm;
+    }
+    public void setSesionActual(Profesor profe){
+        this.sesion = "profe";
+        this.profe = profe;
+    }
+    public void setSesionActual(Encargado enc){
+        this.sesion = "enc";
+        this.enc = enc;
     }
     
     public ResultSet Consultar(String datos, String tabla){
@@ -84,21 +141,14 @@ public class Controlador implements ActionListener{
     }
     
     private void Prueba() throws SQLException{
-        Encargado enc = new Encargado("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
-        Profesor prof = new Profesor("Crastoso", "Fibonerto", "fcra@institucion.cl", "10653-4", "1234");
-        Administrador admin = new Administrador("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
+        IniciarSesion("21850-0", "1234");
         
-        Equipo equipo = new Equipo(116, "Impresora", "Cannon", 2018, 'n');
-        Usuario user = new Usuario("Miranda", "Valentina", "vmir@institucion.cl", "21850-0", "1234", 'E');
+        //String e = SesionActual().consultarEstados();
         
-        //Equipo e = enc.buscarEquipo("103");
-        boolean e = enc.actualizarSala(505,'o');
-        
-        //int e = Insertar("Equipos","113, 'Computador', 'HP', 2009, 'o'");
-        //int e = Actualizar("Equipos","estado = \'n\'","idEquipo","107");
-        //int e = Eliminar("Salas","idSala","504");
+        String e = enc.consultarEstados();
         
         System.out.println(e);
+        System.out.println(enc.toString());
         
         /*
         form.getjLabel2().setText(algo);
