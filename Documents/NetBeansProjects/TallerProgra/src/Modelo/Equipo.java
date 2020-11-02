@@ -53,4 +53,11 @@ public class Equipo {
     public void setEstado(char estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Equipo{" + "idEquipo=" + idEquipo + ", tipo=" + tipo + ", marca=" + marca + ", ano=" + ano + ", estado=" + estado + '}';
+    }
+    
+    
 }

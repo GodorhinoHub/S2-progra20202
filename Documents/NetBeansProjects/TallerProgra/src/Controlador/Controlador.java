@@ -9,17 +9,21 @@ public class Controlador implements ActionListener{
     private final InicioSesion form;
     private final Connection conect;
     private Statement stmt;
-
+    
+    private static Controlador instance = null;
+    
     public Controlador(Conexion conex, InicioSesion form) throws ClassNotFoundException, SQLException {
         this.form = form;
         this.conect = conex.getConection();
     }
     
     public void Iniciar() throws ClassNotFoundException, SQLException{
-        this.form.setTitle("Aplicación de cuadro, profe pongame 7");
+        
+        this.form.setTitle("Profe pongame 7");
         this.form.setLocationRelativeTo(null);
         this.form.setVisible(true);
         stmt = this.conect.createStatement();
+        
         
         Prueba();        
     }
@@ -44,6 +48,11 @@ public class Controlador implements ActionListener{
     
     
     private void Prueba() throws SQLException{
+        Encargado en = new Encargado("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
+        Equipo e = en.buscarEquipo("103");
+        System.out.println(e.toString());
+        
+        /*
         String algo = "";
         ResultSet listar = Consultar("idEquipo, tipo, marca, año");
         //ResultSet estado = Consultar("estado");
@@ -58,7 +67,10 @@ public class Controlador implements ActionListener{
         buscar.next();
         algo = algo + " " + buscar.getString("tipo");
         form.getjLabel2().setText(algo);
+        */
     }
+    
+    
     
     @Override
     public void actionPerformed(ActionEvent e){
