@@ -2,12 +2,14 @@ package Controlador;
 
 import Modelo.Usuario;
 import Modelo.Equipo;
+import Modelo.Sala;
 import Main.main;
 import java.sql.*;
 
 public class Encargado extends Usuario{
     Controlador con = main.control;
     
+    // Constructor
     public Encargado(String apellido, String nombre, String correo, String rut, String clave) {
         super(apellido, nombre, correo, rut, clave, 'E');
     }
@@ -23,7 +25,7 @@ public class Encargado extends Usuario{
         int ano;
         char estado;
         try {
-            ResultSet equipo = con.consultarSi("idEquipo, tipo, marca, año, estado", "idEquipo", idEquipo);
+            ResultSet equipo = con.consultarSi("idEquipo, tipo, marca, año, estado", "Equipos", "idEquipo", idEquipo);
             equipo.next();
             tipo = equipo.getString("tipo");
             marca = equipo.getString("marca");
@@ -80,5 +82,13 @@ public class Encargado extends Usuario{
             System.out.println("Error al buscar equipo");
             return "null";
         }
+    }
+    
+    public void consultarSalas(){
+        
+    }
+    
+    public void actualizarSala(){
+        
     }
 }

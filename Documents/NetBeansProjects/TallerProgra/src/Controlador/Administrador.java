@@ -1,7 +1,8 @@
 package Controlador;
 
 import Modelo.Usuario;
-import Modelo.Equipo;
+//import Modelo.Equipo;
+//import Modelo.Sala;
 import Main.main;
 import java.sql.*;
 
@@ -23,15 +24,15 @@ public class Administrador extends Usuario {
         String correo;
         char cargo;
         try {
-            ResultSet equipo = con.consultarSi("apellido, nombre, correo, cargo", "idEquipo", rut);
-            equipo.next();
-            apellido = equipo.getString("apellido");
-            nombre = equipo.getString("nombre");
-            correo = equipo.getString("correo");
-            cargo = equipo.getString("cargo").charAt(0);
+            ResultSet usuario = con.consultarSi("apellido, nombre, correo, cargo", "Usuarios", "rut", '\'' + rut + '\'');
+            usuario.next();
+            apellido = usuario.getString("apellido");
+            nombre = usuario.getString("nombre");
+            correo = usuario.getString("correo");
+            cargo = usuario.getString("cargo").charAt(0);
             return new Usuario(apellido, nombre, correo, rut, "clave secreta", cargo);
         } catch(SQLException e){
-            System.out.println("Error al buscar equipo");
+            System.out.println("Error al buscar usuario");
             return new Usuario("null", "null", "null", "null", "null", '0');
         }
     }

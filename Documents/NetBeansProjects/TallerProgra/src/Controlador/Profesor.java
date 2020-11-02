@@ -1,13 +1,15 @@
 package Controlador;
 
 import Modelo.Usuario;
-import Modelo.Equipo;
+//import Modelo.Equipo;
+import Modelo.Sala;
 import Main.main;
 import java.sql.*;
 
 public class Profesor extends Usuario{
     Controlador con = main.control;
     
+    // Constructor
     public Profesor(String apellido, String nombre, String correo, String rut, String clave) {
         super(apellido, nombre, correo, rut, clave, 'P');
     }
@@ -30,12 +32,16 @@ public class Profesor extends Usuario{
     
     public String consultarEquipo(String idEquipo){
         try {
-            ResultSet equipo = con.consultarSi("estado", "idEquipo", idEquipo);
+            ResultSet equipo = con.consultarSi("estado", "Equipos", "idEquipo", idEquipo);
             equipo.next();
             return "Estado del equipo "+ idEquipo + " = " + equipo.getString("estado").charAt(0);
         } catch(SQLException e){
             System.out.println("Error al buscar equipo");
             return "error";
         }
+    }
+    
+    public void consultarSalas(){
+        
     }
 }
