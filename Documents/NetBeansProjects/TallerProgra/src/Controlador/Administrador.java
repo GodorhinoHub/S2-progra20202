@@ -5,6 +5,7 @@ import Modelo.Usuario;
 //import Modelo.Sala;
 import Main.main;
 import java.sql.*;
+import java.util.logging.*;
 
 public class Administrador extends Usuario {
     Controlador con = main.control;
@@ -14,8 +15,21 @@ public class Administrador extends Usuario {
     }
     
     // Funtion
-    public void registrarUsuario(Usuario usuario){
-        
+    public boolean registrarUsuario(Usuario usuario){
+        ResultSet exists = con.consultarSi("apellido", "Usuarios", "rut", '\'' + usuario.getRut() + '\'');
+        try {
+            if (exists.next()) {
+                System.out.println("Usuario ya existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el usuario");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        con.Insertar("Usuarios", usuario.toString());
+        System.out.println("Usuario creado con éxito");
+        return true;
     }
     
     public Usuario buscarUsuario(String rut){
@@ -31,18 +45,19 @@ public class Administrador extends Usuario {
             correo = usuario.getString("correo");
             cargo = usuario.getString("cargo").charAt(0);
             return new Usuario(apellido, nombre, correo, rut, "clave secreta", cargo);
-        } catch(SQLException e){
+        } catch (SQLException ex) {
             System.out.println("Error al buscar usuario");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
             return new Usuario("null", "null", "null", "null", "null", '0');
         }
     }
     
     public String listarUsuarios(){
-        try{
-            String lista = "";
+        String lista = "";
+        try {
             ResultSet listar = con.Consultar("apellido, nombre, correo, rut, cargo", "Usuarios");
             while (listar.next()) {
-		lista = lista + "\n " + new Usuario(listar.getString("apellido"),
+                lista = lista + "\n " + new Usuario(listar.getString("apellido"),
                         listar.getString("nombre"),
                         listar.getString("correo"),
                         listar.getString("rut"),
@@ -51,8 +66,9 @@ public class Administrador extends Usuario {
                         .toString();
             }
             return lista;
-        } catch(SQLException e){
+        } catch (SQLException ex) {
             System.out.println("Error al buscar usuario");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
             return "null";
         }
     }

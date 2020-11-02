@@ -5,6 +5,7 @@ import Modelo.Usuario;
 import Modelo.Sala;
 import Main.main;
 import java.sql.*;
+import java.util.logging.*;
 
 public class Profesor extends Usuario{
     Controlador con = main.control;
@@ -24,8 +25,9 @@ public class Profesor extends Usuario{
                         listar.getString("idEquipo") + " = " + listar.getString("estado").charAt(0);
             }
             return lista;
-        } catch(SQLException e){
+        } catch(SQLException ex){
             System.out.println("Error al buscar equipo");
+            Logger.getLogger(Profesor.class.getName()).log(Level.SEVERE, null, ex);
             return "null";
         }
     }
@@ -35,13 +37,27 @@ public class Profesor extends Usuario{
             ResultSet equipo = con.consultarSi("estado", "Equipos", "idEquipo", idEquipo);
             equipo.next();
             return "Estado del equipo "+ idEquipo + " = " + equipo.getString("estado").charAt(0);
-        } catch(SQLException e){
+        } catch(SQLException ex){
             System.out.println("Error al buscar equipo");
+            Logger.getLogger(Profesor.class.getName()).log(Level.SEVERE, null, ex);
             return "error";
         }
     }
     
-    public void consultarSalas(){
-        
+    public String consultarSalas(){
+        try{
+            String lista = "";
+            ResultSet listar = con.Consultar("idSala, estado", "Salas");
+            while (listar.next()) {
+		lista = lista + "\n " + new Sala(listar.getInt("idSala"),
+                        listar.getString("estado").charAt(0))
+                        .toString();
+            }
+            return lista;
+        } catch(SQLException ex){
+            System.out.println("Error al buscar salas");
+            Logger.getLogger(Profesor.class.getName()).log(Level.SEVERE, null, ex);
+            return "null";
+        }
     }
 }

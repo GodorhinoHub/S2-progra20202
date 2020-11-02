@@ -26,8 +26,6 @@ public class Sala {
 
     @Override
     public String toString() {
-        return "Sala{" + "idSala=" + idSala + ", estado=" + estado + '}';
+        return "(" + idSala + ", \'" + estado + "\')";
     }
-    
-    
 }

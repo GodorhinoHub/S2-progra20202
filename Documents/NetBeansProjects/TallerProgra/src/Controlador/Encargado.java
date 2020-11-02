@@ -5,6 +5,7 @@ import Modelo.Equipo;
 import Modelo.Sala;
 import Main.main;
 import java.sql.*;
+import java.util.logging.*;
 
 public class Encargado extends Usuario{
     Controlador con = main.control;
@@ -15,8 +16,21 @@ public class Encargado extends Usuario{
     }
     
     // Functions
-    public void registrarEquipo(Equipo equipo){
-        
+    public boolean registrarEquipo(Equipo equipo){
+        ResultSet exists = con.consultarSi("idEquipo", "Equipos", "idEquipo", '\'' + Integer.toString(equipo.getIdEquipo()) + '\'');
+        try {
+            if (exists.next()) {
+                System.out.println("Equipo ya existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el equipo");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        con.Insertar("Equipos", equipo.toString());
+        System.out.println("Equipo creado con éxito");
+        return true;
     }
     
     public Equipo buscarEquipo(String idEquipo){
@@ -32,8 +46,9 @@ public class Encargado extends Usuario{
             ano = equipo.getInt("año");
             estado = equipo.getString("estado").charAt(0);
             return new Equipo(Integer.parseInt(idEquipo),tipo,marca,ano,estado);
-        } catch(SQLException e){
+        } catch (SQLException ex) {
             System.out.println("Error al buscar equipo");
+            Logger.getLogger(Encargado.class.getName()).log(Level.SEVERE, null, ex);
             return new Equipo(0,"null","null",0,'0');
         }
     }
@@ -51,8 +66,9 @@ public class Encargado extends Usuario{
                         .toString();
             }
             return lista;
-        } catch(SQLException e){
-            System.out.println("Error al buscar equipo");
+        } catch(SQLException ex){
+            System.out.println("Error al buscar equipos");
+            Logger.getLogger(Encargado.class.getName()).log(Level.SEVERE, null, ex);
             return "null";
         }
     }
@@ -78,14 +94,28 @@ public class Encargado extends Usuario{
                         listar.getString("idEquipo") + " = " + listar.getString("estado").charAt(0);
             }
             return lista;
-        } catch(SQLException e){
+        } catch(SQLException ex){
             System.out.println("Error al buscar equipo");
+            Logger.getLogger(Encargado.class.getName()).log(Level.SEVERE, null, ex);
             return "null";
         }
     }
     
-    public void consultarSalas(){
-        
+    public String listarSalas(){
+        try{
+            String lista = "";
+            ResultSet listar = con.Consultar("idSala, estado", "Salas");
+            while (listar.next()) {
+		lista = lista + "\n " + new Sala(listar.getInt("idSala"),
+                        listar.getString("estado").charAt(0))
+                        .toString();
+            }
+            return lista;
+        } catch(SQLException ex){
+            System.out.println("Error al buscar salas");
+            Logger.getLogger(Encargado.class.getName()).log(Level.SEVERE, null, ex);
+            return "null";
+        }
     }
     
     public void actualizarSala(){

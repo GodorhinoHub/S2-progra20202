@@ -5,6 +5,8 @@ import Vista.*;
 import java.awt.event.*;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controlador implements ActionListener{
     private final InicioSesion form;
@@ -48,10 +50,12 @@ public class Controlador implements ActionListener{
     }
     
     public int Insertar(String tabla, String valores){
+        
         try {
-            return stmt.executeUpdate("INSERT INTO " + tabla + " VALUES (" + valores + ')');
-        } catch (SQLException e) {
+            return stmt.executeUpdate("INSERT INTO " + tabla + " VALUES " + valores);
+        } catch (SQLException ex) {
             System.out.println("Error en INSERT");
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
     }
@@ -79,17 +83,19 @@ public class Controlador implements ActionListener{
     
     private void Prueba() throws SQLException{
         Encargado enc = new Encargado("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
-        Profesor prof = new Profesor("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
+        Profesor prof = new Profesor("Crastoso", "Fibonerto", "fcra@institucion.cl", "10653-4", "1234");
         Administrador admin = new Administrador("Alvarez", "Cristián", "calv@institucion.cl", "21643-4", "1234");
         
+        Equipo equipo = new Equipo(113, "Dispositivo periférico", "Genius", 2020, 'o');
+        
         //Equipo e = enc.buscarEquipo("103");
-        //Usuario e = admin.buscarUsuario("15946-4");
+        boolean e = enc.registrarEquipo(equipo);
         
         //int e = Insertar("Equipos","113, 'Computador', 'HP', 2009, 'o'");
         //int e = Actualizar("Equipos","estado = \'n\'","idEquipo","107");
         //int e = Eliminar("Salas","idSala","504");
         
-        //System.out.println(e);
+        System.out.println(e);
         
         /*
         form.getjLabel2().setText(algo);

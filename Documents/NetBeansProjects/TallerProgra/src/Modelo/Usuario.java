@@ -66,8 +66,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "apellido=" + apellido + ", nombre=" + nombre + ", correo=" + correo + ", rut=" + rut + ", clave=" + clave + ", cargo=" + cargo + '}';
+        return "(\'" + apellido + "\', \'" + nombre + "\', \'" + correo + "\', \'" + rut + "\', \'" + clave + "\', \'" + cargo + "\')";
     }
-    
-    
 }
