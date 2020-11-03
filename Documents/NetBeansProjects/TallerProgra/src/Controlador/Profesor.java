@@ -36,7 +36,7 @@ public class Profesor extends Usuario{
         ResultSet equipo = con.consultarSi("estado", "Equipos", "idEquipo", idEquipo);
         try {
             equipo.next();
-            return "Estado del equipo "+ idEquipo + " = " + equipo.getString("estado").charAt(0);
+            return "Estado del equipo "+ idEquipo + " = " + '\'' + equipo.getString("estado") + '\'';
         } catch(SQLException ex){
             System.out.println("Error al buscar equipo");
             Logger.getLogger(Profesor.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,6 +58,32 @@ public class Profesor extends Usuario{
             System.out.println("Error al buscar salas");
             Logger.getLogger(Profesor.class.getName()).log(Level.SEVERE, null, ex);
             return "null";
+        }
+    }
+    
+    public boolean actualizarSala(int idSala, char estado){
+        int update;
+        ResultSet exists = con.consultarSi("idSala", "Salas", "idSala", Integer.toString(idSala));
+        try {
+            if(exists.next()){
+                update = con.Actualizar("Salas",
+                            "estado = \'" + estado + '\'',
+                        "idSala", Integer.toString(idSala));
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Sala no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe la sala");
+            Logger.getLogger(Administrador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 }

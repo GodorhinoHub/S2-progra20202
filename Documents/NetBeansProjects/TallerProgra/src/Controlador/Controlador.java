@@ -10,12 +10,13 @@ import javax.swing.JFrame;
 
 public class Controlador implements ActionListener{
     private final Connection conect;
-    private JFrame form;
+    private Formulario forma;
+    private InicioSesion form;
     private Statement stmt;
     private Administrador adm;
     private Profesor profe;
     private Encargado enc;
-    private String sesion;
+    public Usuario usr;
     
     // Constructor
     public Controlador(Conexion conex) throws ClassNotFoundException, SQLException {
@@ -28,11 +29,12 @@ public class Controlador implements ActionListener{
     }
     
     // Setters
-    public void Iniciar(JFrame form) throws ClassNotFoundException, SQLException{
+    public void Iniciar(InicioSesion form) throws ClassNotFoundException, SQLException{
         this.form = form;
         this.form.setTitle("Profe pongame 7");
         this.form.setLocationRelativeTo(null);
         this.form.setVisible(true);
+        this.form.getButtonSession().addActionListener(this);
         stmt = this.conect.createStatement();
         
         Prueba();        
@@ -40,20 +42,22 @@ public class Controlador implements ActionListener{
     
     public void Cerrar() throws SQLException{
         this.form.dispose();
-        stmt.close();
     }
     
     public void setSesionActual(Administrador adm){
-        this.sesion = "adm";
         this.adm = adm;
+        this.usr = adm;
+        forma = new Formulario(adm);
     }
     public void setSesionActual(Profesor profe){
-        this.sesion = "profe";
         this.profe = profe;
+        this.usr = profe;
+        forma = new Formulario(profe);
     }
     public void setSesionActual(Encargado enc){
-        this.sesion = "enc";
         this.enc = enc;
+        this.usr = enc;
+        forma = new Formulario(enc);
     }
     
     // Functions
@@ -153,22 +157,30 @@ public class Controlador implements ActionListener{
     }
     
     private void Prueba() throws SQLException{
-        IniciarSesion("21850-0", "1234");
-        
-        //String e = SesionActual().consultarEstados();
-        
-        String e = enc.consultarEstados();
-        
-        System.out.println(e);
-        System.out.println(enc.toString());
-        
-        /*
-        form.getjLabel2().setText(algo);
-        */
+        Profesor pr = new Profesor("Guajardo", "Nicolas", "ngua@institucion.cl", "16236-4", "1234");
+        String o = pr.consultarEquipo("102");
+        System.out.println(o);
     }
     
     @Override
     public void actionPerformed(ActionEvent e){
+        if (e.getSource() == form.getButtonSession()) {
+            String code = form.getTextfieldUser().getText();
+            String pass = form.getTextfieldPass().getText();
+            if(IniciarSesion(code,pass)){
+                form.getLabelState().setText("Ha entrado al sistema!");
+                System.out.println(usr.toString() + " Ha entrado al sistema!");
+                try {
+                    Cerrar();
+                    forma.abrirInterfaz();
+                } catch (SQLException ex) {
+                    System.out.println("Error al cerrar");
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                form.getLabelState().setText("Ha ocurrido un problema, revise la consola");
+            }
+        }
         
     }
 }

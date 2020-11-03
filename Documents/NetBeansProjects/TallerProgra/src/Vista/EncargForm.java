@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Asus
@@ -27,17 +30,14 @@ public class EncargForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelNombreUsuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("NombreUsuario");
+        labelNombreUsuario.setText("NombreUsuario");
 
         jLabel2.setText("Identificado como Encargado de sede");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "*Seleccione lo que necesite hacer*", "Ingresar el registro de un nuevo equipo", "Buscar el registro de un equipo", "Listar los registros de equipos", "Actualizar el registro de un equipo", "Eliminar el registro de un equipo", "Actualizar el estado operativo de un equipo", "Consultar el estado operativo de los equipos" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,21 +46,18 @@ public class EncargForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
+                    .addComponent(labelNombreUsuario)
                     .addComponent(jLabel2))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(316, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(jLabel1)
+                .addComponent(labelNombreUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(472, Short.MAX_VALUE))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,8 +99,9 @@ public class EncargForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelNombreUsuario;
     // End of variables declaration//GEN-END:variables
+
+    
 }

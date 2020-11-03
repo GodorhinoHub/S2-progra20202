@@ -7,6 +7,7 @@ package Vista;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -31,67 +32,69 @@ public class InicioSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        labelTitulo = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
+        labelContrasena = new javax.swing.JLabel();
+        textfieldUser = new javax.swing.JTextField();
+        buttonSession = new javax.swing.JButton();
+        labelState = new javax.swing.JLabel();
+        textfieldPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Sistema del instituto");
+        labelTitulo.setText("Sistema del instituto");
 
-        jLabel2.setText("Usuario");
+        labelUsuario.setText("Usuario");
 
-        jLabel3.setText("Contraseña");
+        labelContrasena.setText("Contraseña");
 
-        jTextField1.setText("  ");
+        buttonSession.setText("Iniciar Sesion");
 
-        jTextField2.setText("  ");
-
-        jButton1.setText("Iniciar Sesion");
+        labelState.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
+                        .addGap(103, 103, 103)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(buttonSession)
+                            .addComponent(labelTitulo)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1))))
-                .addContainerGap(143, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelState, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelContrasena)
+                                    .addComponent(labelUsuario))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textfieldUser)
+                                    .addComponent(textfieldPass, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addGap(47, 47, 47)
+                .addContainerGap()
+                .addComponent(labelTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                    .addComponent(labelUsuario)
+                    .addComponent(textfieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(39, 39, 39))
+                    .addComponent(labelContrasena)
+                    .addComponent(textfieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(labelState)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonSession)
+                .addContainerGap())
         );
 
         pack();
@@ -133,44 +136,69 @@ public class InicioSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton buttonSession;
+    private javax.swing.JLabel labelContrasena;
+    private javax.swing.JLabel labelState;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelUsuario;
+    private javax.swing.JPasswordField textfieldPass;
+    private javax.swing.JTextField textfieldUser;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getjButton1() {
-        return jButton1;
+    public JButton getButtonSession() {
+        return buttonSession;
     }
 
-    public void setjButton1(JButton jButton1) {
-        this.jButton1 = jButton1;
+    public void setButtonSession(JButton buttonSession) {
+        this.buttonSession = buttonSession;
     }
 
-    public JLabel getjLabel2() {
-        return jLabel2;
+    public JLabel getLabelContrasena() {
+        return labelContrasena;
     }
 
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
+    public void setLabelContrasena(JLabel labelContrasena) {
+        this.labelContrasena = labelContrasena;
     }
 
-    public JTextField getjTextField1() {
-        return jTextField1;
+    public JLabel getLabelState() {
+        return labelState;
     }
 
-    public void setjTextField1(JTextField jTextField1) {
-        this.jTextField1 = jTextField1;
+    public void setLabelState(JLabel labelState) {
+        this.labelState = labelState;
     }
 
-    public JTextField getjTextField2() {
-        return jTextField2;
+    public JLabel getLabelTitulo() {
+        return labelTitulo;
     }
 
-    public void setjTextField2(JTextField jTextField2) {
-        this.jTextField2 = jTextField2;
+    public void setLabelTitulo(JLabel labelTitulo) {
+        this.labelTitulo = labelTitulo;
+    }
+
+    public JLabel getLabelUsuario() {
+        return labelUsuario;
+    }
+
+    public void setLabelUsuario(JLabel labelUsuario) {
+        this.labelUsuario = labelUsuario;
+    }
+
+    public JTextField getTextfieldPass() {
+        return textfieldPass;
+    }
+
+    public void setTextfieldPass(JPasswordField textfieldPass) {
+        this.textfieldPass = textfieldPass;
+    }
+
+    public JTextField getTextfieldUser() {
+        return textfieldUser;
+    }
+
+    public void setTextfieldUser(JTextField textfieldUser) {
+        this.textfieldUser = textfieldUser;
     }
     
 }
