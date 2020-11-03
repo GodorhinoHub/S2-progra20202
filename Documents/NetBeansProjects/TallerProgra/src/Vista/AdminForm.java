@@ -5,8 +5,12 @@
  */
 package Vista;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -32,6 +36,28 @@ public class AdminForm extends javax.swing.JFrame {
 
         labelNombreUsuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textareaListarUsuarios = new javax.swing.JTextArea();
+        buttonListarUsuarios = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        textfieldApellido = new javax.swing.JTextField();
+        textfieldNombre = new javax.swing.JTextField();
+        textfieldCorreo = new javax.swing.JTextField();
+        textfieldRut = new javax.swing.JTextField();
+        textfieldCargo = new javax.swing.JTextField();
+        buttonRegistrarUsuario = new javax.swing.JButton();
+        buttonBuscarUsuario = new javax.swing.JButton();
+        buttonEliminarUsuario = new javax.swing.JButton();
+        buttonActualizarUsuario = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        textfieldPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,29 +65,162 @@ public class AdminForm extends javax.swing.JFrame {
 
         jLabel2.setText("Identificado como Administrador");
 
+        jLabel1.setText("Listar Usuarios");
+
+        jLabel3.setText("Ingrese los datos requeridos");
+
+        textareaListarUsuarios.setColumns(20);
+        textareaListarUsuarios.setRows(5);
+        jScrollPane1.setViewportView(textareaListarUsuarios);
+
+        buttonListarUsuarios.setText("Listar");
+
+        jLabel4.setText("Apellido:");
+
+        jLabel5.setText("Nombre:");
+
+        jLabel6.setText("Correo:");
+
+        jLabel7.setText("RUT:");
+
+        jLabel8.setText("Cargo:");
+
+        buttonRegistrarUsuario.setText("Registrar Usuario");
+
+        buttonBuscarUsuario.setText("Buscar Usuario con RUT");
+        buttonBuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBuscarUsuarioActionPerformed(evt);
+            }
+        });
+
+        buttonEliminarUsuario.setText("Eliminar Usuario conRUT");
+
+        buttonActualizarUsuario.setText("Modificar Usuario");
+
+        jLabel9.setText("Clave:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(labelNombreUsuario))
-                .addContainerGap(345, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(buttonListarUsuarios)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 128, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(29, 29, 29))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(29, 29, 29)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textfieldCargo)
+                                    .addComponent(textfieldPass)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buttonRegistrarUsuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonBuscarUsuario))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(buttonEliminarUsuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonActualizarUsuario))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(textfieldApellido))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textfieldNombre)
+                                    .addComponent(textfieldCorreo)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textfieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(61, 61, 61))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap()
                 .addComponent(labelNombreUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel3)
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(textfieldRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(textfieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(textfieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(textfieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(textfieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textfieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonRegistrarUsuario)
+                            .addComponent(buttonBuscarUsuario))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonEliminarUsuario)
+                            .addComponent(buttonActualizarUsuario))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonListarUsuarios)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonBuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonBuscarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,9 +258,130 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonActualizarUsuario;
+    private javax.swing.JButton buttonBuscarUsuario;
+    private javax.swing.JButton buttonEliminarUsuario;
+    private javax.swing.JButton buttonListarUsuarios;
+    private javax.swing.JButton buttonRegistrarUsuario;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelNombreUsuario;
+    private javax.swing.JTextArea textareaListarUsuarios;
+    private javax.swing.JTextField textfieldApellido;
+    private javax.swing.JTextField textfieldCargo;
+    private javax.swing.JTextField textfieldCorreo;
+    private javax.swing.JTextField textfieldNombre;
+    private javax.swing.JPasswordField textfieldPass;
+    private javax.swing.JTextField textfieldRut;
     // End of variables declaration//GEN-END:variables
 
+    public JButton getButtonActualizarUsuario() {
+        return buttonActualizarUsuario;
+    }
+
+    public void setButtonActualizarUsuario(JButton buttonActualizarUsuario) {
+        this.buttonActualizarUsuario = buttonActualizarUsuario;
+    }
+
+    public JButton getButtonBuscarUsuario() {
+        return buttonBuscarUsuario;
+    }
+
+    public void setButtonBuscarUsuario(JButton buttonBuscarUsuario) {
+        this.buttonBuscarUsuario = buttonBuscarUsuario;
+    }
+
+    public JButton getButtonEliminarUsuario() {
+        return buttonEliminarUsuario;
+    }
+
+    public void setButtonEliminarUsuario(JButton buttonEliminarUsuario) {
+        this.buttonEliminarUsuario = buttonEliminarUsuario;
+    }
+
+    public JButton getButtonListarUsuarios() {
+        return buttonListarUsuarios;
+    }
+
+    public void setButtonListarUsuarios(JButton buttonListarUsuarios) {
+        this.buttonListarUsuarios = buttonListarUsuarios;
+    }
+
+    public JButton getButtonRegistrarUsuario() {
+        return buttonRegistrarUsuario;
+    }
+
+    public void setButtonRegistrarUsuario(JButton buttonRegistrarUsuario) {
+        this.buttonRegistrarUsuario = buttonRegistrarUsuario;
+    }
+
+    public JLabel getLabelNombreUsuario() {
+        return labelNombreUsuario;
+    }
+
+    public void setLabelNombreUsuario(JLabel labelNombreUsuario) {
+        this.labelNombreUsuario = labelNombreUsuario;
+    }
+
+    public JTextArea getTextareaListarUsuarios() {
+        return textareaListarUsuarios;
+    }
+
+    public void setTextareaListarUsuarios(JTextArea textareaListarUsuarios) {
+        this.textareaListarUsuarios = textareaListarUsuarios;
+    }
+
+    public JTextField getTextfieldApellido() {
+        return textfieldApellido;
+    }
+
+    public void setTextfieldApellido(JTextField textfieldApellido) {
+        this.textfieldApellido = textfieldApellido;
+    }
+
+    public JTextField getTextfieldCargo() {
+        return textfieldCargo;
+    }
+
+    public void setTextfieldCargo(JTextField textfieldCargo) {
+        this.textfieldCargo = textfieldCargo;
+    }
+
+    public JTextField getTextfieldCorreo() {
+        return textfieldCorreo;
+    }
+
+    public void setTextfieldCorreo(JTextField textfieldCorreo) {
+        this.textfieldCorreo = textfieldCorreo;
+    }
+
+    public JTextField getTextfieldNombre() {
+        return textfieldNombre;
+    }
+
+    public void setTextfieldNombre(JTextField textfieldNombre) {
+        this.textfieldNombre = textfieldNombre;
+    }
+
+    public JTextField getTextfieldRut() {
+        return textfieldRut;
+    }
+
+    public void setTextfieldRut(JTextField textfieldRut) {
+        this.textfieldRut = textfieldRut;
+    }
+
+    public JTextField getTextfieldPass() {
+        return textfieldPass;
+    }
     
 }

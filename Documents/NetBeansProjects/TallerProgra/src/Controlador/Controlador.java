@@ -157,9 +157,7 @@ public class Controlador implements ActionListener{
     }
     
     private void Prueba() throws SQLException{
-        Profesor pr = new Profesor("Guajardo", "Nicolas", "ngua@institucion.cl", "16236-4", "1234");
-        String o = pr.consultarEquipo("102");
-        System.out.println(o);
+        
     }
     
     @Override

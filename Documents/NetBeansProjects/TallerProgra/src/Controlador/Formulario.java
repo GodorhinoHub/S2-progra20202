@@ -52,8 +52,13 @@ public class Formulario implements ActionListener {
         adminForm.setTitle("Profe pongame 7");
         adminForm.setLocationRelativeTo(null);
         adminForm.setVisible(true);
-        //adminForm.getLabelNombreUsuario().setText("Se ha conectado como " + nombreUsr);
+        adminForm.getLabelNombreUsuario().setText("Se ha conectado como " + nombreUsr);
         
+        this.adminForm.getButtonActualizarUsuario().addActionListener(this);
+        this.adminForm.getButtonBuscarUsuario().addActionListener(this);
+        this.adminForm.getButtonEliminarUsuario().addActionListener(this);
+        this.adminForm.getButtonListarUsuarios().addActionListener(this);
+        this.adminForm.getButtonRegistrarUsuario().addActionListener(this);
     }
     
     private void abrirProfeForm(String nombreUsr){
@@ -84,6 +89,27 @@ public class Formulario implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         switch (usr.getCargo()){
             case 'A':
+                if (ae.getSource() == adminForm.getButtonRegistrarUsuario()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonBuscarUsuario()) {
+                    String rut = adminForm.getTextfieldRut().getText();
+                    Usuario user = adm.buscarUsuario(rut);
+                    adminForm.getTextfieldApellido().setText(user.getApellido());
+                    adminForm.getTextfieldNombre().setText(user.getNombre());
+                    adminForm.getTextfieldCorreo().setText(user.getCorreo());
+                    adminForm.getTextfieldCargo().setText(Character.toString(user.getCargo()));
+                    adminForm.getTextfieldPass().setText(user.getClave());
+                }
+                if (ae.getSource() == adminForm.getButtonEliminarUsuario()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonActualizarUsuario()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonListarUsuarios()) {
+                    
+                }
                 break;
             case 'P':
                 if (ae.getSource() == profeForm.getButtonActualizarSala()) {
