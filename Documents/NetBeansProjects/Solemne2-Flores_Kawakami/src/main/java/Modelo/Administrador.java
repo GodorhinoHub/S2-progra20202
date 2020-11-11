@@ -12,15 +12,45 @@ public class Administrador {
         this.Login = Login;
         this.Contrasena = Contrasena;
         this.Email = Email;
-    }    
+    }
     
-    // Getters
+    // Getters  
+    public int getId(){    
+        return id;
+        
+    }
+
+    public String getLogin() {
+        return Login;
+    }
+
+    public String getContrasena() {
+        return Contrasena;
+    }
+
+    public String getEmail() {    
+        return Email;
+    }
     
     // Setters
-    
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLogin(String Login) {
+        this.Login = Login;
+    }
+
+    public void setContrasena(String Contrasena) {
+        this.Contrasena = Contrasena;
+    }
+
+    public void setEmail(String Email) {    
+        this.Email = Email;
+    }
+
     // Functions
-    public void altaUsuario(){
-        
+    public void altaUsuario() {
     }
     
     public void altaAsignatura(){
