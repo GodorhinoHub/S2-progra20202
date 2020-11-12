@@ -3,8 +3,6 @@ package Modelo;
 import java.sql.*;
 
 public class OperacionesBD extends Conexion {
-    private Statement stmt;
-
     public OperacionesBD(String schema, String user, String password) throws SQLException {
         setConexion(schema, user, password);
         stmt = getConexion().createStatement();

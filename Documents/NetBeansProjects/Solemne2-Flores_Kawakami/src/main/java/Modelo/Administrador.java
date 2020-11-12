@@ -51,6 +51,7 @@ public class Administrador {
 
     // Functions
     public void altaUsuario() {
+        
     }
     
     public void altaAsignatura(){

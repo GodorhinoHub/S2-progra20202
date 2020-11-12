@@ -8,6 +8,8 @@ public class Conexion {
     private String password; // "1234standart"
     private String url;
     private Connection con = null;
+    protected Statement stmt = null;
+
 
     public void setConexion(String schema, String user, String password) {
         this.schema = schema;
@@ -23,5 +25,15 @@ public class Conexion {
             System.out.println("Error en la conexión a la BBDD");
         }
         return con;
+    }
+    
+    public void Cerrar(){
+        try {
+            stmt.close();
+            getConexion().close();
+        } catch (SQLException ex) {
+            System.out.println("Error al cerrar la BD");
+            System.out.println(ex);
+        }
     }
 }
