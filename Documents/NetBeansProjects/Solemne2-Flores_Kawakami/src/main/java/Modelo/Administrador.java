@@ -77,4 +77,9 @@ public class Administrador {
     public void ModificarAsignatura(){
         
     }
+
+    @Override
+    public String toString() {
+        return "(" + id + ", \'" + Login + "\', \'" + Contrasena + "\', \'" + Email + "\')";
+    }
 }

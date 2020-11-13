@@ -90,4 +90,9 @@ public class Profesor {
     public void listarAlumnos(){
         
     }
+
+    @Override
+    public String toString() {
+        return "(" + id + ", \'" + Login + "\', \'" + Contrasena + "\', \'" + Nombre + "\', \'" + Apellidos + "\', \'" + Email + "\', " + Especialista + ")";
+    }
 }

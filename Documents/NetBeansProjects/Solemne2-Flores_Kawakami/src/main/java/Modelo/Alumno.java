@@ -70,4 +70,9 @@ public class Alumno {
     public void listarNotas(){
         
     }
+
+    @Override
+    public String toString() {
+        return "(" + id + ", \'" + Login + "\', \'" + Contrasena + "\', \'" + Nombre + "\', \'"+ Apellidos + "\')";
+    }
 }
