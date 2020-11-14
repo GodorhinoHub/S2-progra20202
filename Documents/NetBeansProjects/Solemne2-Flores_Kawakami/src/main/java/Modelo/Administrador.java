@@ -5,17 +5,19 @@ public class Administrador {
     String Login;
     String Contrasena;
     String Email;
+    OperacionesBD con;
 
     // Constructor
-    public Administrador(int id, String Login, String Contrasena, String Email) {
+    public Administrador(int id, String Login, String Contrasena, String Email, OperacionesBD con) {
         this.id = id;
         this.Login = Login;
         this.Contrasena = Contrasena;
         this.Email = Email;
+        this.con = con;
     }
     
     // Getters  
-    public int getId(){    
+    public int getId(){
         return id;
         
     }
@@ -50,31 +52,31 @@ public class Administrador {
     }
 
     // Functions
-    public void altaUsuario() {
+    public void altaUsuario() { // Se podrá dar de alta usuarios.
         
     }
     
-    public void altaAsignatura(){
+    public void altaAsignatura(){ // Se podrá dar de alta asignaturas.
         
     }
     
-    public void matricularAlumno(){
+    public void matricularAlumno(){ // Se podrá matricular a los alumnos en las distintas asignaturas.
         
     }
     
-    public void bajaUsuario(){
+    public void bajaUsuario(){ // Se podrá dar de baja un usuario.
         
     }
     
-    public void bajaAsignatura(){
+    public void bajaAsignatura(){ // Se podrá dar de baja una asignatura.
         
     }
     
-    public void modificarUsuario(){
+    public void modificarUsuario(){ // Se podrá modificar datos de un usuario.
         
     }
     
-    public void ModificarAsignatura(){
+    public void ModificarAsignatura(){ // Se podrá modificar datos de una asignatura.
         
     }
 

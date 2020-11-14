@@ -21,8 +21,16 @@ public class Controlador implements ActionListener{
         this.vista.setVisible(true);
     }
     
+    public void Cerrar() throws SQLException{
+        this.vista.dispose();
+    }
+    
     public void Prueba() throws SQLException{
-        
+        System.out.println("Prueba iniciado");
+        Alumno al = new Alumno(112, "echo", "echo", "echo-", "echo", modelo);
+        String a = al.listarNotas().toString();
+        System.out.println(a);
+        System.out.println("Prueba terminado");
     }
 
     @Override

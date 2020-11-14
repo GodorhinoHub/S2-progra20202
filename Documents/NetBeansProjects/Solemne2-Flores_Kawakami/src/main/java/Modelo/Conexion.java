@@ -23,6 +23,7 @@ public class Conexion {
             con = (Connection) DriverManager.getConnection(this.url, this.user, this.password);
         } catch (SQLException ex) {
             System.out.println("Error en la conexión a la BBDD");
+            System.out.println(ex);
         }
         return con;
     }

@@ -8,9 +8,10 @@ public class Profesor {
     String Apellidos;
     String Email;
     int Especialista;
+    OperacionesBD con;
 
     // Constructor
-    public Profesor(int id, String Login, String Contrasena, String Nombre, String Apellidos, String Email, int Especialista) {
+    public Profesor(int id, String Login, String Contrasena, String Nombre, String Apellidos, String Email, int Especialista, OperacionesBD con) {
         this.id = id;
         this.Login = Login;
         this.Contrasena = Contrasena;
@@ -18,6 +19,7 @@ public class Profesor {
         this.Apellidos = Apellidos;
         this.Email = Email;
         this.Especialista = Especialista;
+        this.con = con;
     }    
 
     // Getters
@@ -79,15 +81,15 @@ public class Profesor {
     }
     
     // Functions
-    public void listarProfesores(){
+    public void listarProfesores(){ // Se muestra el listado de las asignaturas que imparte el profesor conectado y cuando selecciona una de ellas se muestran los alumnos que se encuentra matriculados en esa asignatura (nombre y apellidos).
         
     }
     
-    public void ponerNotas(){
+    public void ponerNotas(){ // Se listan los profesores que imparten clases en el centro (nombre y apellidos).
         
     }
     
-    public void listarAlumnos(){
+    public void listarAlumnos(){ // Se muestra el listado de las asignaturas que imparte el profesor conectado para que cuando seleccione una de ellas pueda elegir un alumno de los que se encuentran matriculados en esa asignatura y ponerle una nota.
         
     }
 
