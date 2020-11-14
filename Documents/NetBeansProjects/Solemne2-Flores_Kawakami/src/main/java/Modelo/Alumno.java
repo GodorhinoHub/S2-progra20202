@@ -19,7 +19,15 @@ public class Alumno {
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
         this.con = con;
-    }    
+    }
+    
+    public Alumno(String Login, String Contrasena, String Nombre, String Apellidos) {
+        this.Login = Login;
+        this.Contrasena = Contrasena;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.con = con;
+    } 
 
     // Getters
     public int getId() {
@@ -64,10 +72,10 @@ public class Alumno {
     }
     
     // Functions
-    public DefaultListModel listarAlumnosClase(){ // Se listan los alumnos que comparten clase con el alumno conectado (nombre y apellidos). 
+    public DefaultListModel listarAlumnosClase(int id){ // Se listan los alumnos que comparten clase con el alumno conectado (nombre y apellidos). 
         DefaultListModel def = new DefaultListModel();
         ResultSet listar = null;
-        ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(this.id));
+        ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(id));
         try {
             nivelId.next();
             listar = con.consultarSi("nombre, apellidos", "alumno","nivel_id", nivelId.getString("nivel_id"));
@@ -87,10 +95,10 @@ public class Alumno {
         }
     }
     
-    public DefaultListModel listarProfesores(){ // Se listarán los profesores que imparten clase al alumno conectado (nombre, apellidos y nombre de la asignatura que le imparten).
+    public DefaultListModel listarProfesores(int id){ // Se listarán los profesores que imparten clase al alumno conectado (nombre, apellidos y nombre de la asignatura que le imparten).
         DefaultListModel def = new DefaultListModel();
         String asignaturaNombre = "";
-        ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(this.id));
+        ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(id));
         ResultSet profesorId = null;
         ResultSet listar = null;
         try {
@@ -115,10 +123,9 @@ public class Alumno {
         }
     }
     
-    public DefaultListModel listarNotas(){ // Se muestra un listado de las asignaturas en las que el alumno conectado se encuentra matriculado y cuando haga clik sobre una de ellas, se muestran las calificaciones correspondientes a esa asignatura
+    public DefaultListModel listarNotas(int id){ // Se muestra un listado de las asignaturas en las que el alumno conectado se encuentra matriculado y cuando haga clik sobre una de ellas, se muestran las calificaciones correspondientes a esa asignatura
         DefaultListModel def = new DefaultListModel();
-        String asignaturaNombre = "";
-        ResultSet asignaturaId = con.consultarSi("asignatura_id", "asignatura_has_alumno","alumno_id", Integer.toString(this.id));
+        ResultSet asignaturaId = con.consultarSi("asignatura_id", "asignatura_has_alumno","alumno_id", Integer.toString(id));
         ResultSet listar = null;
         try {
             asignaturaId.next();
@@ -138,11 +145,11 @@ public class Alumno {
             return null;
         }
     }
-    
-    public void buscarNota(){
-        
-    }
 
+    public String toStringMatricula() {
+        return ",\'" + Login + "\', \'" + Contrasena + "\', \'" + Nombre + "\', \'"+ Apellidos + "\')";
+    }
+    
     @Override
     public String toString() {
         return "(" + id + ", \'" + Login + "\', \'" + Contrasena + "\', \'" + Nombre + "\', \'"+ Apellidos + "\')";

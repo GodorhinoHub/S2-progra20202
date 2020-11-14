@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.sql.*;
+import javax.swing.*;
+
 public class Profesor {
     int id;
     String Login;
@@ -81,16 +84,49 @@ public class Profesor {
     }
     
     // Functions
-    public void listarProfesores(){ // Se muestra el listado de las asignaturas que imparte el profesor conectado y cuando selecciona una de ellas se muestran los alumnos que se encuentra matriculados en esa asignatura (nombre y apellidos).
-        
+    public DefaultListModel listarAlumnos(int id){ // Se muestra el listado de las asignaturas que imparte el profesor conectado y cuando selecciona una de ellas se muestran los alumnos que se encuentra matriculados en esa asignatura (nombre y apellidos).
+        DefaultListModel def = new DefaultListModel();
+        ResultSet listar = con.consultarSi("nombre", "asignatura","profesor_id", Integer.toString(id));
+        try {
+            while (listar.next()) {
+                def.addElement("" + listar.getString("nombre"));
+            }
+            return def;
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar asignaturas");
+            System.out.println(ex);
+            return null;
+        }
     }
     
-    public void ponerNotas(){ // Se listan los profesores que imparten clases en el centro (nombre y apellidos).
-        
+    public DefaultListModel listarProfesores(){ // Se listan los profesores que imparten clases en el centro (nombre y apellidos).
+        DefaultListModel def = new DefaultListModel();
+        ResultSet listar = con.Consultar("nombre, apellidos", "profesor");
+        try {
+            while (listar.next()) {
+                def.addElement("" + listar.getString("nombre") + " " + listar.getString("apellidos"));
+            }
+            return def;
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar asignaturas");
+            System.out.println(ex);
+            return null;
+        }
     }
     
-    public void listarAlumnos(){ // Se muestra el listado de las asignaturas que imparte el profesor conectado para que cuando seleccione una de ellas pueda elegir un alumno de los que se encuentran matriculados en esa asignatura y ponerle una nota.
-        
+    public DefaultListModel registrarNotas(int id){ // Se muestra el listado de las asignaturas que imparte el profesor conectado para que cuando seleccione una de ellas pueda elegir un alumno de los que se encuentran matriculados en esa asignatura y ponerle una nota.
+        DefaultListModel def = new DefaultListModel();
+        ResultSet listar = con.consultarSi("nombre", "asignatura","profesor_id", Integer.toString(id));
+        try {
+            while (listar.next()) {
+                def.addElement("" + listar.getString("nombre"));
+            }
+            return def;
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar asignaturas");
+            System.out.println(ex);
+            return null;
+        }
     }
 
     @Override

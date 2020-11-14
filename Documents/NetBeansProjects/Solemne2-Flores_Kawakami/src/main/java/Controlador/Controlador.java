@@ -27,8 +27,12 @@ public class Controlador implements ActionListener{
     
     public void Prueba() throws SQLException{
         System.out.println("Prueba iniciado");
-        Alumno al = new Alumno(112, "echo", "echo", "echo-", "echo", modelo);
-        String a = al.listarNotas().toString();
+        Alumno al = new Alumno("cmirandao", "1234", "Carmen", "Miranda Olivares");
+        //Profesor pr = new Profesor(402, "echo", "echo", "echo", "echo","echo",5,modelo);
+        Administrador admin = new Administrador(501,"echo", "echo", "echo", modelo);
+        boolean a = admin.matricularAlumno(al, 101);
+        //String a = pr.listarAlumnos(pr.getId()).toString();
+        //String a = pr.listarProfesores().toString();
         System.out.println(a);
         System.out.println("Prueba terminado");
     }
