@@ -4,12 +4,12 @@ import java.sql.*;
 import javax.swing.*;
 
 public class Alumno {
-    int id;
-    String Login;
-    String Contrasena;
-    String Nombre;
-    String Apellidos;
-    OperacionesBD con;
+    private int id;
+    private String Login;
+    private String Contrasena;
+    private String Nombre;
+    private String Apellidos;
+    private OperacionesBD con;
 
     // Constructor
     public Alumno(int id, String Login, String Contrasena, String Nombre, String Apellidos, OperacionesBD con) {
@@ -146,8 +146,8 @@ public class Alumno {
         }
     }
 
-    public String toStringMatricula() {
-        return ",\'" + Login + "\', \'" + Contrasena + "\', \'" + Nombre + "\', \'"+ Apellidos + "\')";
+    public String toStringAlta() {
+        return ",\'" + Login + "\', \'" + Contrasena + "\', \'" + Nombre + "\', \'"+ Apellidos + "\'";
     }
     
     @Override

@@ -28,6 +28,12 @@ public class Asignatura {
         this.Nombre = Nombre;
     }
     
-    
-    
+    public String toStringAlta(int nivel_id, int profesor_id) {
+        return id + "," + nivel_id + "," + profesor_id + ",\'" + Nombre + "\'";
+    }
+
+    @Override
+    public String toString() {
+        return "Asignatura{" + "id=" + id + ", Nombre=" + Nombre + '}';
+    }    
 }

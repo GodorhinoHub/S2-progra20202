@@ -4,14 +4,14 @@ import java.sql.*;
 import javax.swing.*;
 
 public class Profesor {
-    int id;
-    String Login;
-    String Contrasena;
-    String Nombre;
-    String Apellidos;
-    String Email;
-    int Especialista;
-    OperacionesBD con;
+    private int id;
+    private String Login;
+    private String Contrasena;
+    private String Nombre;
+    private String Apellidos;
+    private String Email;
+    private int Especialista;
+    private OperacionesBD con;
 
     // Constructor
     public Profesor(int id, String Login, String Contrasena, String Nombre, String Apellidos, String Email, int Especialista, OperacionesBD con) {
@@ -23,7 +23,17 @@ public class Profesor {
         this.Email = Email;
         this.Especialista = Especialista;
         this.con = con;
-    }    
+    }
+    
+    public Profesor(String Login, String Contrasena, String Nombre, String Apellidos, String Email, int Especialista, OperacionesBD con) {
+        this.Login = Login;
+        this.Contrasena = Contrasena;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Email = Email;
+        this.Especialista = Especialista;
+        this.con = con;
+    }   
 
     // Getters
     public int getId() {
@@ -127,6 +137,10 @@ public class Profesor {
             System.out.println(ex);
             return null;
         }
+    }
+    
+    public String toStringAlta() {
+        return " \'" + Login + "\', \'" + Contrasena + "\', \'" + Nombre + "\', \'" + Apellidos + "\', \'" + Email + "\', " + Especialista;
     }
 
     @Override
