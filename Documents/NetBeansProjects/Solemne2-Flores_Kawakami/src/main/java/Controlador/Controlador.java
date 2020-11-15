@@ -33,8 +33,7 @@ public class Controlador implements ActionListener{
         //Asignatura as = new Asignatura(2181,"Filosofía");
         Administrador admin = new Administrador(501,"echo", "echo", "echo", modelo);
         
-        //String a = pr.listarAlumnos(pr.getId()).toString();
-        //String a = pr.listarProfesores().toString();
+        //boolean a = admin;
         //System.out.println(a);
         System.out.println("Prueba terminado");
     }

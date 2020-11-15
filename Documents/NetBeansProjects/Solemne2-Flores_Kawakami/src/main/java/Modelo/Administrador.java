@@ -169,8 +169,9 @@ public class Administrador {
                 System.out.println("Alumno no existe");
                 return false;
             }
-            alumnoExists.close();;
+            alumnoExists.close();
         } catch (SQLException ex) {
+            System.out.println("Error al comprobar si alumno existe");
             System.out.println(ex);
         }
         
@@ -182,13 +183,14 @@ public class Administrador {
             }
             asignaturaExists.close();;
         } catch (SQLException ex) {
+            System.out.println("Error al comprobar si la asignatura existe");
             System.out.println(ex);
         }
         
         try {
             ResultSet exists = con.consultarSi("*", "asignatura_has_alumno",
                     "asignatura_id", Integer.toString(asignatura_id) + " AND alumno_id = " + Integer.toString(alumno_id));
-            if(exists.next()){
+            if(!exists.next()){
                 insert = con.Insertar("asignatura_has_alumno",
                         "(" + Integer.toString(asignatura_id) + "," + Integer.toString(alumno_id) + "," + Integer.toString(id_nota) + ")");
                 if (insert != 0 ) {
@@ -209,35 +211,151 @@ public class Administrador {
         }
     }
     
-    public void bajaUsuario(int id, String usuario){ // Se podrá dar de baja un usuario.
-        
+    public boolean bajaUsuario(int id, String usuario){ // Se podrá dar de baja un usuario.
+        int delet;
+        ResultSet exists = con.consultarSi("*", usuario, "id", Integer.toString(id));
+        try {
+            if(exists.next()){
+                delet = con.Eliminar(usuario, "id", Integer.toString(id));
+                if(delet != 0){
+                    System.out.println("Borrado exitoso");
+                    return true;
+                }else{
+                    System.out.println("No se pudo borrar");
+                    return false;
+                }
+            }else{
+                System.out.println("Usuario no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el usuario");
+            System.out.println(ex);
+            return false;
+        }
     }
     
-    public void bajaAsignatura(int id){ // Se podrá dar de baja una asignatura.
-        
+    public boolean bajaAsignatura(int id){ // Se podrá dar de baja una asignatura.
+        int delet;
+        ResultSet exists = con.consultarSi("*", "asignatura", "id", Integer.toString(id));
+        try {
+            if(exists.next()){
+                delet = con.Eliminar("asignatura", "id", Integer.toString(id));
+                if(delet != 0){
+                    System.out.println("Borrado exitoso");
+                    return true;
+                }else{
+                    System.out.println("No se pudo borrar");
+                    return false;
+                }
+            }else{
+                System.out.println("Usuario no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe la asignatura");
+            System.out.println(ex);
+            return false;
+        }
     }
     
-    public void modificarUsuario(Administrador administrador){ // Se podrá modificar datos de un usuario.
-        
+    public boolean modificarUsuario(Administrador administrador){ // Se podrá modificar datos de un usuario.
+        int update;
+        ResultSet exists = con.consultarSi("*", "administrador", "id", Integer.toString(administrador.getId()));
+        try {
+            if(exists.next()){
+                update = con.Actualizar("administrador",
+                            "login = \'" + administrador.getLogin()+ "\'" +
+                            ",clave = \'" + administrador.getContrasena()+ "\'" +
+                            ",email = \'" + administrador.getEmail()+ "\'",
+                        "id", Integer.toString(administrador.getId()));
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Usuario no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el usuario");
+            System.out.println(ex);
+            return false;
+        }
     }
     
-    public void modificarUsuario(Alumno alumno){ // Se podrá modificar datos de un usuario.
-        
+    public boolean modificarUsuario(Alumno alumno){ // Se podrá modificar datos de un usuario.
+        int update;
+        ResultSet exists = con.consultarSi("*", "alumno", "id", Integer.toString(alumno.getId()));
+        try {
+            if(exists.next()){
+                update = con.Actualizar("administrador",
+                            "login = \'" + alumno.getLogin()+ "\'" +
+                            ",clave = \'" + alumno.getContrasena()+ "\'" +
+                            ",nombre = \'" + alumno.getNombre()+ "\'" +
+                            ",apellidos = \'" + alumno.getApellidos()+ "\'",
+                        "id", Integer.toString(alumno.getId()));
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Usuario no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el usuario");
+            System.out.println(ex);
+            return false;
+        }
     }
     
-    public void modificarUsuario(Profesor profesor){ // Se podrá modificar datos de un usuario.
-        
+    public boolean modificarUsuario(Profesor profesor){ // Se podrá modificar datos de un usuario.
+        int update;
+        ResultSet exists = con.consultarSi("*", "profesor", "id", Integer.toString(profesor.getId()));
+        try {
+            if(exists.next()){
+                update = con.Actualizar("profesor",
+                            "login = \'" + profesor.getLogin()+ "\'" +
+                            ",clave = \'" + profesor.getContrasena()+ "\'" +
+                            ",nombre = \'" + profesor.getNombre()+ "\'" +
+                            ",apellidos = \'" + profesor.getApellidos()+ "\'" +
+                            ",email = \'" + profesor.getEmail()+ "\'" +
+                            ",especialista = \'" + Integer.toString(profesor.getEspecialista())+ "\'",
+                        "id", Integer.toString(profesor.getId()));
+                if (update != 0 ) {
+                    System.out.println("Actualización completa");
+                    return true;
+                }else{
+                    System.out.println("Error al actualizar");
+                    return false;
+                }
+            }else{
+                System.out.println("Usuario no existe");
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al comprobar si existe el usuario");
+            System.out.println(ex);
+            return false;
+        }
     }
     
     public boolean ModificarAsignatura(Asignatura asignatura, int nivel_id, int profesor_id){ // Se podrá modificar datos de una asignatura.
         int update;
-        ResultSet exists = con.consultarSi("nombre", "asignatura", "id", Integer.toString(asignatura.getId()));
+        ResultSet exists = con.consultarSi("*", "asignatura", "id", Integer.toString(asignatura.getId()));
         try {
             if(exists.next()){
                 update = con.Actualizar("asignatura",
-                            "nombre = \'" + asignatura.getNombre()+ '\'' +
-                            ",nivel_id = \'" + Integer.toString(nivel_id) + '\'' +
-                            ",profesor_id = \'" + Integer.toString(profesor_id) + '\'',
+                            "nivel_id = \'" + Integer.toString(nivel_id)+ "\'" +
+                            ",profesor_id = \'" + Integer.toString(profesor_id)+ "\'" +
+                            ",nombre = \'" + asignatura.getNombre()+ "\'",
                         "id", Integer.toString(asignatura.getId()));
                 if (update != 0 ) {
                     System.out.println("Actualización completa");
@@ -247,7 +365,7 @@ public class Administrador {
                     return false;
                 }
             }else{
-                System.out.println("Id de asignatura no existe");
+                System.out.println("Asignatura no existe");
                 return false;
             }
         } catch (SQLException ex) {
