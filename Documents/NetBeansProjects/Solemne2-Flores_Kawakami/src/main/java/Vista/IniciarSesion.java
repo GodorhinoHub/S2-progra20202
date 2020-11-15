@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -27,21 +32,83 @@ public class IniciarSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Titulo = new javax.swing.JLabel();
+        Login = new javax.swing.JLabel();
+        Clave = new javax.swing.JLabel();
+        buttonAceptar = new javax.swing.JButton();
+        fieldLogin = new javax.swing.JTextField();
+        fieldClave = new javax.swing.JPasswordField();
+        labelState = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Titulo.setText("Por favor Inicie Sesión");
+
+        Login.setText("Login:");
+
+        Clave.setText("Clave:");
+
+        buttonAceptar.setText("Iniciar Sesión");
+
+        fieldLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(Titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(buttonAceptar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelState, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(Clave)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(fieldClave))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Login)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(fieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(Titulo)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Login)
+                    .addComponent(fieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Clave)
+                    .addComponent(fieldClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(buttonAceptar)
+                .addGap(33, 33, 33)
+                .addComponent(labelState, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +146,48 @@ public class IniciarSesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Clave;
+    private javax.swing.JLabel Login;
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton buttonAceptar;
+    private javax.swing.JPasswordField fieldClave;
+    private javax.swing.JTextField fieldLogin;
+    private javax.swing.JLabel labelState;
     // End of variables declaration//GEN-END:variables
+
+    // Getters
+    public JButton getButtonAceptar() {
+        return buttonAceptar;
+    }
+
+    public JPasswordField getFieldClave() {
+        return fieldClave;
+    }
+
+    public JTextField getFieldLogin() {
+        return fieldLogin;
+    }
+
+    public JLabel getLabelState() {
+        return labelState;
+    }
+
+    // Setters
+    public void setButtonAceptar(JButton Aceptar) {
+        this.buttonAceptar = Aceptar;
+    }
+
+    public void setFieldClave(JPasswordField fieldClave) {
+        this.fieldClave = fieldClave;
+    }
+
+    public void setFieldLogin(JTextField fieldLogin) {
+        this.fieldLogin = fieldLogin;
+    }
+
+    public void setLabelState(JLabel labelState) {
+        this.labelState = labelState;
+    }
+
+
 }
