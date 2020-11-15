@@ -94,18 +94,36 @@ public class Profesor {
     }
     
     // Functions
-    public DefaultListModel listarAlumnos(int id){ // Se muestra el listado de las asignaturas que imparte el profesor conectado y cuando selecciona una de ellas se muestran los alumnos que se encuentra matriculados en esa asignatura (nombre y apellidos).
+    public DefaultListModel listarAlumnos(int id){ // Se muestra el listado de las asignaturas que imparte el profesor conectado 
         DefaultListModel def = new DefaultListModel();
-        ResultSet listar = con.consultarSi("nombre,", "asignatura","profesor_id", Integer.toString(id));
+        ResultSet listar = con.consultarSi("nombre, id", "asignatura","profesor_id", Integer.toString(id));
         try {
             while (listar.next()) {
-                def.addElement("" + listar.getString("nombre"));
+                def.addElement(listar.getString("nombre") + "-" + listar.getString("id"));
             }
             return def;
         } catch (SQLException ex) {
             System.out.println("Error al buscar asignaturas");
             System.out.println(ex);
             return null;
+        }
+    }
+    
+    public DefaultListModel buscarAlumnos(String asignatura){ // cuando selecciona una de ellas se muestran los alumnos que se encuentra matriculados en esa asignatura (nombre y apellidos).
+        DefaultListModel def = new DefaultListModel();
+        ResultSet listar = con.Consultar("alumno.nombre, alumno.apellidos, alumno.id", "alumno" +
+                " INNER JOIN asignatura_has_alumno " +
+                " ON asignatura_has_alumno.asignatura_id = " + asignatura + " AND asignatura_has_alumno.alumno_id=alumno.id");
+        try {
+            while (listar.next()) {
+                def.addElement(listar.getString("alumno.nombre") + " " + listar.getString("alumno.apellidos") +"-" + listar.getString("alumno.id"));
+            }
+            return def;
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar asignaturas");
+            System.out.println(ex);
+            def.addElement("Error al buscar asignaturas");
+            return def;
         }
     }
     
@@ -124,9 +142,17 @@ public class Profesor {
         }
     }
     
-    public DefaultListModel buscarAlumnos(int id, String asignatura){ // Se muestra el listado de las asignaturas que imparte el profesor conectado para que cuando seleccione una de ellas pueda elegir un alumno de los que se encuentran matriculados en esa asignatura y ponerle una nota.
-        DefaultListModel def = new DefaultListModel();
-        return def;
+    public String ponerNota(String alumno_id, String asignatura_id, Nota nota){ // para que cuando seleccione una de ellas pueda elegir un alumno de los que se encuentran matriculados en esa asignatura y ponerle una nota.
+        int insert;
+        insert = con.Insertar("nota(asignatura_has_alumno_alumno_id,asignatura_has_alumno_asignatura_id,trimestre,nota)",
+            "(" + alumno_id + "," + asignatura_id + "," + nota.toString() + ")");
+        if (insert != 0) {
+            System.out.println("Nota Puesta");
+            return "Nota Puesta";
+        } else{
+            System.out.println("Error al poner nota");
+            return "Nota no puesta";
+        }
     }
     
     public String toStringAlta() {

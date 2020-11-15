@@ -34,11 +34,6 @@ public class ProfeForm extends javax.swing.JFrame {
 
         labelNombreUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaAsignaturas = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaAlumnos = new javax.swing.JList<>();
-        buttonListarAlumnos = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         listaProfesores = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
@@ -51,28 +46,16 @@ public class ProfeForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         fieldNota = new javax.swing.JTextField();
         buttonRegistrarNota = new javax.swing.JButton();
+        labelNotaStatus = new javax.swing.JLabel();
+        fieldTrimestre = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelNombreUsuario.setText("jLabel1");
 
         jLabel1.setText("Listar alumnos");
-
-        listaAsignaturas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listaAsignaturas);
-
-        listaAlumnos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(listaAlumnos);
-
-        buttonListarAlumnos.setText("jButton1");
 
         listaProfesores.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -81,7 +64,7 @@ public class ProfeForm extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(listaProfesores);
 
-        jLabel2.setText("Listar profesores");
+        jLabel2.setText("Lista de profesores");
 
         jLabel3.setText("Registrar notas");
 
@@ -92,68 +75,67 @@ public class ProfeForm extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(listaAsignaturas2);
 
-        listaAlumnos2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane5.setViewportView(listaAlumnos2);
 
-        buttonRegistrarNotas.setText("jButton2");
+        buttonRegistrarNotas.setText("Buscar");
 
         jLabel4.setText("Nota");
 
-        fieldNota.setText("jTextField1");
         fieldNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldNotaActionPerformed(evt);
             }
         });
 
-        buttonRegistrarNota.setText("jButton1");
+        buttonRegistrarNota.setText("Registrar");
+
+        jLabel5.setText("Trimestre");
+
+        jLabel6.setText("Asignaturas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(buttonListarAlumnos)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane3)
+                                .addGap(50, 50, 50)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNotaStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonRegistrarNota)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(fieldNota, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(fieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonRegistrarNota))))
-                        .addGap(132, 132, 132))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonRegistrarNotas)
-                        .addGap(297, 297, 297))))
+                                    .addComponent(fieldTrimestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)))
+                            .addComponent(jLabel3))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonRegistrarNotas)
+                .addGap(214, 214, 214))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,32 +145,33 @@ public class ProfeForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane1))
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonListarAlumnos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                                .addComponent(jScrollPane4))
-                            .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel6))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(fieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(buttonRegistrarNota)))
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonRegistrarNotas)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                                .addComponent(fieldTrimestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(buttonRegistrarNota)
+                            .addGap(18, 18, 18)
+                            .addComponent(labelNotaStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(46, 46, 46))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(buttonRegistrarNotas)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -234,37 +217,28 @@ public class ProfeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonListarAlumnos;
     private javax.swing.JButton buttonRegistrarNota;
     private javax.swing.JButton buttonRegistrarNotas;
     private javax.swing.JTextField fieldNota;
+    private javax.swing.JTextField fieldTrimestre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel labelNombreUsuario;
-    private javax.swing.JList<String> listaAlumnos;
+    private javax.swing.JLabel labelNotaStatus;
     private javax.swing.JList<String> listaAlumnos2;
-    private javax.swing.JList<String> listaAsignaturas;
     private javax.swing.JList<String> listaAsignaturas2;
     private javax.swing.JList<String> listaProfesores;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getLabelNombreUsuario() {
         return labelNombreUsuario;
-    }
-
-    public JButton getButtonListarAlumnos() {
-        return buttonListarAlumnos;
-    }
-
-    public void setButtonListarAlumnos(JButton buttonListarAlumnos) {
-        this.buttonListarAlumnos = buttonListarAlumnos;
     }
 
     public JButton getButtonRegistrarNota() {
@@ -291,28 +265,12 @@ public class ProfeForm extends javax.swing.JFrame {
         this.fieldNota = fieldNota;
     }
 
-    public JList<String> getListaAlumnos() {
-        return listaAlumnos;
-    }
-
-    public void setListaAlumnos(JList<String> listaAlumnos) {
-        this.listaAlumnos = listaAlumnos;
-    }
-
     public JList<String> getListaAlumnos2() {
         return listaAlumnos2;
     }
 
     public void setListaAlumnos2(JList<String> listaAlumnos2) {
         this.listaAlumnos2 = listaAlumnos2;
-    }
-
-    public JList<String> getListaAsignaturas() {
-        return listaAsignaturas;
-    }
-
-    public void setListaAsignaturas(JList<String> listaAsignaturas) {
-        this.listaAsignaturas = listaAsignaturas;
     }
 
     public JList<String> getListaAsignaturas2() {
@@ -329,6 +287,22 @@ public class ProfeForm extends javax.swing.JFrame {
 
     public void setListaProfesores(JList<String> listaProfesores) {
         this.listaProfesores = listaProfesores;
+    }
+
+    public JTextField getFieldTrimestre() {
+        return fieldTrimestre;
+    }
+
+    public void setFieldTrimestre(JTextField fieldTrimestre) {
+        this.fieldTrimestre = fieldTrimestre;
+    }
+
+    public JLabel getLabelNotaStatus() {
+        return labelNotaStatus;
+    }
+
+    public void setLabelNotaStatus(JLabel labelNotaStatus) {
+        this.labelNotaStatus = labelNotaStatus;
     }
 
     

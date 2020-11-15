@@ -112,6 +112,8 @@ public class Controlador implements ActionListener{
         //Asignatura as = new Asignatura(2181,"Filosofía");
         //DefaultListModel a = al.listarProfesores(23);
         
+        
+        
         String a = "";
         System.out.println(a);
         System.out.println("Prueba terminado");

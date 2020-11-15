@@ -14,6 +14,8 @@ public class Formulario implements ActionListener {
     private Alumno alumn;
     private Profesor profe;
     
+    private String [] codigoAsign;
+    
     // Constructor
     public Formulario(Administrador admin) {
         this.tipoUsr = "admin";
@@ -84,11 +86,9 @@ public class Formulario implements ActionListener {
         profeForm.setVisible(true);
         profeForm.getLabelNombreUsuario().setText("Se ha conectado como " + nombreUsr);
         
-        profeForm.getListaAsignaturas().setModel(profe.listarAlumnos(profe.getId()));
         profeForm.getListaProfesores().setModel(profe.listarProfesores());
         profeForm.getListaAsignaturas2().setModel(profe.listarAlumnos(profe.getId()));
         
-        profeForm.getButtonListarAlumnos().addActionListener(this);
         profeForm.getButtonRegistrarNotas().addActionListener(this);
         profeForm.getButtonRegistrarNota().addActionListener(this);
     }
@@ -124,19 +124,27 @@ public class Formulario implements ActionListener {
                 if (ae.getSource() == alumnForm.getButtonConsultarNotas()) {
                     String asignatura = alumnForm.getListNotas().getSelectedValue();
                     String [] codigo = asignatura.split("-");
-                    System.out.println(codigo[0]);
-                    alumnForm.getListDetalles().setModel(alumn.listarDetalles(codigo[0],alumn.getId()));
+                    System.out.println(codigo[1]);
+                    alumnForm.getListDetalles().setModel(alumn.listarDetalles(codigo[1],alumn.getId()));
                 }
                 break;
             case "profe":
-                if (ae.getSource() == profeForm.getButtonListarAlumnos()) {
-                    
-                }
                 if (ae.getSource() == profeForm.getButtonRegistrarNotas()) {
-                    
+                    String asignatura = profeForm.getListaAsignaturas2().getSelectedValue();
+                    codigoAsign = asignatura.split("-");
+                    System.out.println(codigoAsign[1]);
+                    profeForm.getListaAlumnos2().setModel(profe.buscarAlumnos(codigoAsign[1]));
                 }
                 if (ae.getSource() == profeForm.getButtonRegistrarNota()) {
-                    
+                    String alumno = profeForm.getListaAlumnos2().getSelectedValue();
+                    String [] codigoAlumn = alumno.split("-");
+                    System.out.println(codigoAlumn[1]);
+                    int trim = Integer.parseInt(profeForm.getFieldTrimestre().getText());
+                    double not = Double.parseDouble(profeForm.getFieldNota().getText());
+                    Nota nota = new Nota(trim,not);
+                    String status = profe.ponerNota(codigoAlumn[1], codigoAsign[1], nota);
+                    System.out.println(status);
+                    profeForm.getLabelNotaStatus().setText(status);
                 }
                 break;
             default:

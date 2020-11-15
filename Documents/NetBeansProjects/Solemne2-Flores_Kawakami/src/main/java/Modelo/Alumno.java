@@ -117,11 +117,12 @@ public class Alumno {
     
     public DefaultListModel listarNotas(int id){ // Se muestra un listado de las asignaturas en las que el alumno conectado se encuentra matriculado y cuando haga clik sobre una de ellas, se muestran las calificaciones correspondientes a esa asignatura
         DefaultListModel def = new DefaultListModel();
-        ResultSet listar = con.Consultar("asignatura_has_alumno.asignatura_id, asignatura.nombre", "asignatura INNER JOIN asignatura_has_alumno ON asignatura_has_alumno.alumno_id = " + Integer.toString(id) + 
-               " AND asignatura.id=asignatura_has_alumno.asignatura_id");
+        ResultSet listar = con.Consultar("asignatura_has_alumno.asignatura_id, asignatura.nombre", "asignatura" +
+                " INNER JOIN asignatura_has_alumno ON asignatura_has_alumno.alumno_id = " + Integer.toString(id) + 
+                " AND asignatura.id=asignatura_has_alumno.asignatura_id");
         try {
             while (listar.next()) {
-                def.addElement(listar.getString("asignatura_has_alumno.asignatura_id") + "-" + listar.getString("asignatura.nombre"));
+                def.addElement(listar.getString("asignatura.nombre") + "-" + listar.getString("asignatura_has_alumno.asignatura_id"));
             }
             return def;
         } catch (SQLException ex) {
