@@ -1,6 +1,9 @@
 package Modelo;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 public class Alumno {
@@ -97,23 +100,34 @@ public class Alumno {
     
     public DefaultListModel listarProfesores(int id){ // Se listarán los profesores que imparten clase al alumno conectado (nombre, apellidos y nombre de la asignatura que le imparten).
         DefaultListModel def = new DefaultListModel();
-        String asignaturaNombre = "";
-        ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(id));
-        ResultSet profesorId = null;
-        ResultSet listar = null;
+        String nivel_id = null;
         try {
+            ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(id));
             nivelId.next();
-            profesorId = con.consultarSi("profesor_id, nombre", "asignatura","nivel_id", nivelId.getString("nivel_id"));
-            profesorId.next();
-            asignaturaNombre = profesorId.getString("nombre");
-            listar = con.consultarSi("nombre, apellidos", "profesor", "id", profesorId.getString("profesor_id"));
+            nivel_id = nivelId.getString("nivel_id");
         } catch (SQLException ex) {
-            System.out.println("No se han encontrado asignaturas");
+            System.out.println("Error al buscar el nivel del alumno");
             System.out.println(ex);
         }
+        ResultSet listar = con.Consultar("profesor.nombre, profesor.apellidos, asignatura.nombre", "profesor INNER JOIN asignatura ON asignatura.nivel_id = " + nivel_id + " AND asignatura.profesor_id=profesor.id");
         try {
             while (listar.next()) {
-                def.addElement("" + listar.getString("nombre") + " " + listar.getString("apellidos") + ", " + asignaturaNombre);
+                def.addElement("" + listar.getString("profesor.nombre") + listar.getString("profesor.apellidos") + ", " + listar.getString("asignatura.nombre"));
+            }
+            return def;
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar alumnos");
+            System.out.println(ex);
+            return null;
+        }
+    }
+    
+    public DefaultListModel listarNotas(int id){ // Se muestra un listado de las asignaturas en las que el alumno conectado se encuentra matriculado y cuando haga clik sobre una de ellas, se muestran las calificaciones correspondientes a esa asignatura
+        DefaultListModel def = new DefaultListModel();
+        ResultSet listar = con.Consultar("asignatura.nombre", "asignatura INNER JOIN alumno ON alumno.id = " + Integer.toString(id) + " AND asignatura.nivel_id=alumno.nivel_id");
+        try {
+            while (listar.next()) {
+                def.addElement("" + listar.getString("nombre"));
             }
             return def;
         } catch (SQLException ex) {
@@ -123,24 +137,16 @@ public class Alumno {
         }
     }
     
-    public DefaultListModel listarNotas(int id){ // Se muestra un listado de las asignaturas en las que el alumno conectado se encuentra matriculado y cuando haga clik sobre una de ellas, se muestran las calificaciones correspondientes a esa asignatura
+    public DefaultListModel listarDetalles(String asignatura){
         DefaultListModel def = new DefaultListModel();
-        ResultSet asignaturaId = con.consultarSi("asignatura_id", "asignatura_has_alumno","alumno_id", Integer.toString(id));
-        ResultSet listar = null;
-        try {
-            asignaturaId.next();
-            listar = con.consultarSi("nombre", "asignatura", "id", asignaturaId.getString("asignatura_id"));
-        } catch (SQLException ex) {
-            System.out.println("No se han encontrado asignaturas");
-            System.out.println(ex);
-        }
+        ResultSet listar = con.Consultar("asignatura.nombre", "asignatura INNER JOIN alumno ON alumno.id = " + Integer.toString(id) + " AND asignatura.nivel_id=alumno.nivel_id");
         try {
             while (listar.next()) {
-                def.addElement("" + listar.getString("nombre"));
+                def.addElement("" + listar.getString("nota"));
             }
             return def;
         } catch (SQLException ex) {
-            System.out.println("Error al buscar asignaturas");
+            System.out.println("Error al buscar notas");
             System.out.println(ex);
             return null;
         }

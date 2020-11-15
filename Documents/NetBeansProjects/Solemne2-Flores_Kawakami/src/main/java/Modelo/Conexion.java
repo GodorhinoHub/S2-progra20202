@@ -18,7 +18,7 @@ public class Conexion {
     }
     
     public Connection getConexion(){
-        this.url = "jdbc:mysql://localhost:3306/" + schema;
+        this.url = "jdbc:mysql://" + schema;
         try {
             con = (Connection) DriverManager.getConnection(this.url, this.user, this.password);
         } catch (SQLException ex) {

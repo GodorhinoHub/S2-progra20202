@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Asus
@@ -27,21 +32,171 @@ public class ProfeForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelNombreUsuario = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaAsignaturas = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaAlumnos = new javax.swing.JList<>();
+        buttonListarAlumnos = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaProfesores = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listaAsignaturas2 = new javax.swing.JList<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        listaAlumnos2 = new javax.swing.JList<>();
+        buttonRegistrarNotas = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        fieldNota = new javax.swing.JTextField();
+        buttonRegistrarNota = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        labelNombreUsuario.setText("jLabel1");
+
+        jLabel1.setText("Listar alumnos");
+
+        listaAsignaturas.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listaAsignaturas);
+
+        listaAlumnos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listaAlumnos);
+
+        buttonListarAlumnos.setText("jButton1");
+
+        listaProfesores.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(listaProfesores);
+
+        jLabel2.setText("Listar profesores");
+
+        jLabel3.setText("Registrar notas");
+
+        listaAsignaturas2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(listaAsignaturas2);
+
+        listaAlumnos2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(listaAlumnos2);
+
+        buttonRegistrarNotas.setText("jButton2");
+
+        jLabel4.setText("Nota");
+
+        fieldNota.setText("jTextField1");
+        fieldNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNotaActionPerformed(evt);
+            }
+        });
+
+        buttonRegistrarNota.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(buttonListarAlumnos)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(fieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buttonRegistrarNota))))
+                        .addGap(132, 132, 132))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(buttonRegistrarNotas)
+                        .addGap(297, 297, 297))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelNombreUsuario)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane1))
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonListarAlumnos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                                .addComponent(jScrollPane4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(fieldNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonRegistrarNota)))
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonRegistrarNotas)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNotaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +234,102 @@ public class ProfeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonListarAlumnos;
+    private javax.swing.JButton buttonRegistrarNota;
+    private javax.swing.JButton buttonRegistrarNotas;
+    private javax.swing.JTextField fieldNota;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel labelNombreUsuario;
+    private javax.swing.JList<String> listaAlumnos;
+    private javax.swing.JList<String> listaAlumnos2;
+    private javax.swing.JList<String> listaAsignaturas;
+    private javax.swing.JList<String> listaAsignaturas2;
+    private javax.swing.JList<String> listaProfesores;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getLabelNombreUsuario() {
+        return labelNombreUsuario;
+    }
+
+    public JButton getButtonListarAlumnos() {
+        return buttonListarAlumnos;
+    }
+
+    public void setButtonListarAlumnos(JButton buttonListarAlumnos) {
+        this.buttonListarAlumnos = buttonListarAlumnos;
+    }
+
+    public JButton getButtonRegistrarNota() {
+        return buttonRegistrarNota;
+    }
+
+    public void setButtonRegistrarNota(JButton buttonRegistrarNota) {
+        this.buttonRegistrarNota = buttonRegistrarNota;
+    }
+
+    public JButton getButtonRegistrarNotas() {
+        return buttonRegistrarNotas;
+    }
+
+    public void setButtonRegistrarNotas(JButton buttonRegistrarNotas) {
+        this.buttonRegistrarNotas = buttonRegistrarNotas;
+    }
+
+    public JTextField getFieldNota() {
+        return fieldNota;
+    }
+
+    public void setFieldNota(JTextField fieldNota) {
+        this.fieldNota = fieldNota;
+    }
+
+    public JList<String> getListaAlumnos() {
+        return listaAlumnos;
+    }
+
+    public void setListaAlumnos(JList<String> listaAlumnos) {
+        this.listaAlumnos = listaAlumnos;
+    }
+
+    public JList<String> getListaAlumnos2() {
+        return listaAlumnos2;
+    }
+
+    public void setListaAlumnos2(JList<String> listaAlumnos2) {
+        this.listaAlumnos2 = listaAlumnos2;
+    }
+
+    public JList<String> getListaAsignaturas() {
+        return listaAsignaturas;
+    }
+
+    public void setListaAsignaturas(JList<String> listaAsignaturas) {
+        this.listaAsignaturas = listaAsignaturas;
+    }
+
+    public JList<String> getListaAsignaturas2() {
+        return listaAsignaturas2;
+    }
+
+    public void setListaAsignaturas2(JList<String> listaAsignaturas2) {
+        this.listaAsignaturas2 = listaAsignaturas2;
+    }
+
+    public JList<String> getListaProfesores() {
+        return listaProfesores;
+    }
+
+    public void setListaProfesores(JList<String> listaProfesores) {
+        this.listaProfesores = listaProfesores;
+    }
+
+    
 }
