@@ -6,7 +6,7 @@ import Vista.*;
 import java.sql.*;
 
 public class main {
-    public static void main(String[] args) throws ClassNotFoundException, SQLException{
+    public static void main(String[] args) throws SQLException{
         OperacionesBD bd = new OperacionesBD("localhost:3306/colegio","standart","1234standart");
         IniciarSesion initSes = new IniciarSesion();
         

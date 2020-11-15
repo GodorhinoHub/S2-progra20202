@@ -111,7 +111,9 @@ public class Controlador implements ActionListener{
         //Administrador adn = new Administrador("09456-5", "1234", "ufav@colegio.com", modelo);
         //Asignatura as = new Asignatura(2181,"Filosofía");
         //DefaultListModel a = al.listarProfesores(23);
-        //System.out.println(a);
+        
+        String a = "";
+        System.out.println(a);
         System.out.println("Prueba terminado");
     }
 

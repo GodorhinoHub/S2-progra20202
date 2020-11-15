@@ -100,19 +100,12 @@ public class Alumno {
     
     public DefaultListModel listarProfesores(int id){ // Se listarán los profesores que imparten clase al alumno conectado (nombre, apellidos y nombre de la asignatura que le imparten).
         DefaultListModel def = new DefaultListModel();
-        String nivel_id = null;
-        try {
-            ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(id));
-            nivelId.next();
-            nivel_id = nivelId.getString("nivel_id");
-        } catch (SQLException ex) {
-            System.out.println("Error al buscar el nivel del alumno");
-            System.out.println(ex);
-        }
-        ResultSet listar = con.Consultar("profesor.nombre, profesor.apellidos, asignatura.nombre", "profesor INNER JOIN asignatura ON asignatura.nivel_id = " + nivel_id + " AND asignatura.profesor_id=profesor.id");
+        ResultSet listar = con.Consultar("profesor.nombre, profesor.apellidos, asignatura.nombre", "profesor" +
+                " INNER JOIN asignatura_has_alumno ON asignatura_has_alumno.alumno_id = " + id +
+                " INNER JOIN asignatura ON asignatura_has_alumno.asignatura_id=asignatura.id AND asignatura.profesor_id=profesor.id");
         try {
             while (listar.next()) {
-                def.addElement("" + listar.getString("profesor.nombre") + listar.getString("profesor.apellidos") + ", " + listar.getString("asignatura.nombre"));
+                def.addElement("" + listar.getString("profesor.nombre") + " " + listar.getString("profesor.apellidos") + ", " + listar.getString("asignatura.nombre"));
             }
             return def;
         } catch (SQLException ex) {
@@ -124,10 +117,11 @@ public class Alumno {
     
     public DefaultListModel listarNotas(int id){ // Se muestra un listado de las asignaturas en las que el alumno conectado se encuentra matriculado y cuando haga clik sobre una de ellas, se muestran las calificaciones correspondientes a esa asignatura
         DefaultListModel def = new DefaultListModel();
-        ResultSet listar = con.Consultar("asignatura.nombre", "asignatura INNER JOIN alumno ON alumno.id = " + Integer.toString(id) + " AND asignatura.nivel_id=alumno.nivel_id");
+        ResultSet listar = con.Consultar("asignatura_has_alumno.asignatura_id, asignatura.nombre", "asignatura INNER JOIN asignatura_has_alumno ON asignatura_has_alumno.alumno_id = " + Integer.toString(id) + 
+               " AND asignatura.id=asignatura_has_alumno.asignatura_id");
         try {
             while (listar.next()) {
-                def.addElement("" + listar.getString("nombre"));
+                def.addElement(listar.getString("asignatura_has_alumno.asignatura_id") + "-" + listar.getString("asignatura.nombre"));
             }
             return def;
         } catch (SQLException ex) {
@@ -137,9 +131,10 @@ public class Alumno {
         }
     }
     
-    public DefaultListModel listarDetalles(String asignatura){
+    public DefaultListModel listarDetalles(String asignatura,int id){
         DefaultListModel def = new DefaultListModel();
-        ResultSet listar = con.Consultar("asignatura.nombre", "asignatura INNER JOIN alumno ON alumno.id = " + Integer.toString(id) + " AND asignatura.nivel_id=alumno.nivel_id");
+        ResultSet listar = con.consultarSi("nota", "nota", "asignatura_has_alumno_asignatura_id", asignatura +
+                " AND asignatura_has_alumno_alumno_id = " + id);
         try {
             while (listar.next()) {
                 def.addElement("" + listar.getString("nota"));
@@ -148,7 +143,8 @@ public class Alumno {
         } catch (SQLException ex) {
             System.out.println("Error al buscar notas");
             System.out.println(ex);
-            return null;
+            def.addElement("Error al buscar notas");
+            return def;
         }
     }
 

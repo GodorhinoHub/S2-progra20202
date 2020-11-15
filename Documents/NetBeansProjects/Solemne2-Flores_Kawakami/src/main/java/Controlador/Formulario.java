@@ -8,8 +8,9 @@ public class Formulario implements ActionListener {
     private AdminForm adminForm;
     private AlumnForm alumnForm;
     private ProfeForm profeForm;
-    private Administrador admin;
+    private AdminVista adminVista;
     private final String tipoUsr;
+    private Administrador admin;
     private Alumno alumn;
     private Profesor profe;
     
@@ -85,7 +86,7 @@ public class Formulario implements ActionListener {
         
         profeForm.getListaAsignaturas().setModel(profe.listarAlumnos(profe.getId()));
         profeForm.getListaProfesores().setModel(profe.listarProfesores());
-        profeForm.getListaAsignaturas2().setModel(profe.registrarNotas(profe.getId()));
+        profeForm.getListaAsignaturas2().setModel(profe.listarAlumnos(profe.getId()));
         
         profeForm.getButtonListarAlumnos().addActionListener(this);
         profeForm.getButtonRegistrarNotas().addActionListener(this);
@@ -122,7 +123,9 @@ public class Formulario implements ActionListener {
             case "alumn":
                 if (ae.getSource() == alumnForm.getButtonConsultarNotas()) {
                     String asignatura = alumnForm.getListNotas().getSelectedValue();
-                    alumnForm.getListDetalles().setModel(alumn.listarDetalles(asignatura));
+                    String [] codigo = asignatura.split("-");
+                    System.out.println(codigo[0]);
+                    alumnForm.getListDetalles().setModel(alumn.listarDetalles(codigo[0],alumn.getId()));
                 }
                 break;
             case "profe":
