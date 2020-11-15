@@ -1,6 +1,7 @@
 package Controlador;
 
 import java.awt.event.*;
+import Vista.AdminVistas.*;
 
 public class AdminVista implements ActionListener{
 

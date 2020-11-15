@@ -24,12 +24,31 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labelNombreUsuario" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                  <Component id="seleccione" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="labelNombreUsuario" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="buttonModificarUsuario" min="-2" max="-2" attributes="0"/>
+                              <Component id="seleccione" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonAltaUsuario" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonBajaUsuario" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="buttonModificarAsignatura" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonAltaAsignatura" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonBajaAsignatura" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                      <Component id="buttonMatricularAlumno" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="376" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,7 +59,24 @@
               <Component id="labelNombreUsuario" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="seleccione" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="294" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="buttonAltaUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonAltaAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="buttonModificarUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonModificarAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="buttonBajaUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttonBajaAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="buttonMatricularAlumno" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,6 +90,41 @@
     <Component class="javax.swing.JLabel" name="seleccione">
       <Properties>
         <Property name="text" type="java.lang.String" value="Seleccione lo que necesite hacer"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonAltaUsuario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alta de Usuario"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonAltaAsignatura">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alta de Asignatura"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonModificarUsuario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar datos Usuario"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonModificarAsignatura">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modificar datos Asignatura"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonBajaUsuario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Baja de Usuario"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonBajaAsignatura">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Baja de Asignatura"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonMatricularAlumno">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Matricular Alumno en Asignatura"/>
       </Properties>
     </Component>
   </SubComponents>

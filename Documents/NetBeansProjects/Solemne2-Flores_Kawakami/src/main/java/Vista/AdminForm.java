@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
@@ -31,6 +32,13 @@ public class AdminForm extends javax.swing.JFrame {
 
         labelNombreUsuario = new javax.swing.JLabel();
         seleccione = new javax.swing.JLabel();
+        buttonAltaUsuario = new javax.swing.JButton();
+        buttonAltaAsignatura = new javax.swing.JButton();
+        buttonModificarUsuario = new javax.swing.JButton();
+        buttonModificarAsignatura = new javax.swing.JButton();
+        buttonBajaUsuario = new javax.swing.JButton();
+        buttonBajaAsignatura = new javax.swing.JButton();
+        buttonMatricularAlumno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,16 +46,44 @@ public class AdminForm extends javax.swing.JFrame {
 
         seleccione.setText("Seleccione lo que necesite hacer");
 
+        buttonAltaUsuario.setText("Alta de Usuario");
+
+        buttonAltaAsignatura.setText("Alta de Asignatura");
+
+        buttonModificarUsuario.setText("Modificar datos Usuario");
+
+        buttonModificarAsignatura.setText("Modificar datos Asignatura");
+
+        buttonBajaUsuario.setText("Baja de Usuario");
+
+        buttonBajaAsignatura.setText("Baja de Asignatura");
+
+        buttonMatricularAlumno.setText("Matricular Alumno en Asignatura");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(seleccione))
-                .addContainerGap(376, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(buttonModificarUsuario)
+                                .addComponent(seleccione)
+                                .addComponent(buttonAltaUsuario)
+                                .addComponent(buttonBajaUsuario)))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonModificarAsignatura)
+                            .addComponent(buttonAltaAsignatura)
+                            .addComponent(buttonBajaAsignatura)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(buttonMatricularAlumno)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -56,7 +92,21 @@ public class AdminForm extends javax.swing.JFrame {
                 .addComponent(labelNombreUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(seleccione)
-                .addContainerGap(294, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAltaUsuario)
+                    .addComponent(buttonAltaAsignatura))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonModificarUsuario)
+                    .addComponent(buttonModificarAsignatura))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonBajaUsuario)
+                    .addComponent(buttonBajaAsignatura))
+                .addGap(18, 18, 18)
+                .addComponent(buttonMatricularAlumno)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,12 +148,75 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAltaAsignatura;
+    private javax.swing.JButton buttonAltaUsuario;
+    private javax.swing.JButton buttonBajaAsignatura;
+    private javax.swing.JButton buttonBajaUsuario;
+    private javax.swing.JButton buttonMatricularAlumno;
+    private javax.swing.JButton buttonModificarAsignatura;
+    private javax.swing.JButton buttonModificarUsuario;
     private javax.swing.JLabel labelNombreUsuario;
     private javax.swing.JLabel seleccione;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getLabelNombreUsuario() {
         return labelNombreUsuario;
+    }
+
+    public JButton getButtonAltaAsignatura() {
+        return buttonAltaAsignatura;
+    }
+
+    public void setButtonAltaAsignatura(JButton buttonAltaAsignatura) {
+        this.buttonAltaAsignatura = buttonAltaAsignatura;
+    }
+
+    public JButton getButtonAltaUsuario() {
+        return buttonAltaUsuario;
+    }
+
+    public void setButtonAltaUsuario(JButton buttonAltaUsuario) {
+        this.buttonAltaUsuario = buttonAltaUsuario;
+    }
+
+    public JButton getButtonBajaAsignatura() {
+        return buttonBajaAsignatura;
+    }
+
+    public void setButtonBajaAsignatura(JButton buttonBajaAsignatura) {
+        this.buttonBajaAsignatura = buttonBajaAsignatura;
+    }
+
+    public JButton getButtonBajaUsuario() {
+        return buttonBajaUsuario;
+    }
+
+    public void setButtonBajaUsuario(JButton buttonBajaUsuario) {
+        this.buttonBajaUsuario = buttonBajaUsuario;
+    }
+
+    public JButton getButtonMatricularAlumno() {
+        return buttonMatricularAlumno;
+    }
+
+    public void setButtonMatricularAlumno(JButton buttonMatricularAlumno) {
+        this.buttonMatricularAlumno = buttonMatricularAlumno;
+    }
+
+    public JButton getButtonModificarAsignatura() {
+        return buttonModificarAsignatura;
+    }
+
+    public void setButtonModificarAsignatura(JButton buttonModificarAsignatura) {
+        this.buttonModificarAsignatura = buttonModificarAsignatura;
+    }
+
+    public JButton getButtonModificarUsuario() {
+        return buttonModificarUsuario;
+    }
+
+    public void setButtonModificarUsuario(JButton buttonModificarUsuario) {
+        this.buttonModificarUsuario = buttonModificarUsuario;
     }
 
 }

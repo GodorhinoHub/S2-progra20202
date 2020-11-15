@@ -53,6 +53,13 @@ public class Formulario implements ActionListener {
         adminForm.setVisible(true);
         adminForm.getLabelNombreUsuario().setText("Se ha conectado como " + nombreUsr);
         
+        adminForm.getButtonAltaUsuario().addActionListener(this);
+        adminForm.getButtonModificarUsuario().addActionListener(this);
+        adminForm.getButtonBajaUsuario().addActionListener(this);
+        adminForm.getButtonAltaAsignatura().addActionListener(this);
+        adminForm.getButtonModificarAsignatura().addActionListener(this);
+        adminForm.getButtonBajaAsignatura().addActionListener(this);
+        adminForm.getButtonMatricularAlumno().addActionListener(this);
     }
     
     private void abrirAlumnForm(String nombreUsr){
@@ -65,6 +72,7 @@ public class Formulario implements ActionListener {
         alumnForm.getListAlumnos().setModel(alumn.listarAlumnosClase(alumn.getId()));
         alumnForm.getListProfesores().setModel(alumn.listarProfesores(alumn.getId()));
         alumnForm.getListNotas().setModel(alumn.listarNotas(alumn.getId()));
+        
         alumnForm.getButtonConsultarNotas().addActionListener(this);
     }
     
@@ -78,6 +86,10 @@ public class Formulario implements ActionListener {
         profeForm.getListaAsignaturas().setModel(profe.listarAlumnos(profe.getId()));
         profeForm.getListaProfesores().setModel(profe.listarProfesores());
         profeForm.getListaAsignaturas2().setModel(profe.registrarNotas(profe.getId()));
+        
+        profeForm.getButtonListarAlumnos().addActionListener(this);
+        profeForm.getButtonRegistrarNotas().addActionListener(this);
+        profeForm.getButtonRegistrarNota().addActionListener(this);
     }
     
     
@@ -85,11 +97,27 @@ public class Formulario implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         switch (tipoUsr){
             case "admin":
-                /*
-                if (ae.getSource() == adminForm.getButtonRegistrarUsuario()) {
+                if (ae.getSource() == adminForm.getButtonAltaUsuario()) {
                     
                 }
-                */
+                if (ae.getSource() == adminForm.getButtonModificarUsuario()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonBajaUsuario()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonAltaAsignatura()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonModificarAsignatura()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonBajaAsignatura()) {
+                    
+                }
+                if (ae.getSource() == adminForm.getButtonMatricularAlumno()) {
+                    
+                }
                 break;
             case "alumn":
                 if (ae.getSource() == alumnForm.getButtonConsultarNotas()) {
@@ -98,7 +126,15 @@ public class Formulario implements ActionListener {
                 }
                 break;
             case "profe":
-                
+                if (ae.getSource() == profeForm.getButtonListarAlumnos()) {
+                    
+                }
+                if (ae.getSource() == profeForm.getButtonRegistrarNotas()) {
+                    
+                }
+                if (ae.getSource() == profeForm.getButtonRegistrarNota()) {
+                    
+                }
                 break;
             default:
         }
