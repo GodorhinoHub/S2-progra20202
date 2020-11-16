@@ -1,9 +1,6 @@
 package Modelo;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 public class Alumno {
@@ -77,18 +74,13 @@ public class Alumno {
     // Functions
     public DefaultListModel listarAlumnosClase(int id){ // Se listan los alumnos que comparten clase con el alumno conectado (nombre y apellidos). 
         DefaultListModel def = new DefaultListModel();
-        ResultSet listar = null;
-        ResultSet nivelId = con.consultarSi("nivel_id", "alumno","id", Integer.toString(id));
-        try {
-            nivelId.next();
-            listar = con.consultarSi("nombre, apellidos", "alumno","nivel_id", nivelId.getString("nivel_id"));
-        } catch (SQLException ex) {
-            System.out.println("No se han encontrado alumnos en la clase");
-            System.out.println(ex);
-        }
+        ResultSet listar  = con.Consultar("DISTINCT alumno.nombre,alumno.apellidos","alumno" +
+                " INNER JOIN asignatura_has_alumno A, asignatura_has_alumno B" +
+                " WHERE B.alumno_id= " + id +
+                " AND A.asignatura_id=B.asignatura_id AND alumno.id=A.alumno_id");
         try {
             while (listar.next()) {
-                def.addElement("" + listar.getString("nombre") + " " + listar.getString("apellidos"));
+                def.addElement(listar.getString("alumno.nombre") + " " + listar.getString("alumno.apellidos"));
             }
             return def;
         } catch (SQLException ex) {

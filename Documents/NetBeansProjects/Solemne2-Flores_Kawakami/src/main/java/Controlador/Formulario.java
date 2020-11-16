@@ -81,7 +81,7 @@ public class Formulario implements ActionListener {
     
     private void abrirProfeForm(String nombreUsr){
         profeForm = new ProfeForm();
-        profeForm.setTitle("formulario de profesor");
+        profeForm.setTitle("Formulario de profesor");
         profeForm.setLocationRelativeTo(null);
         profeForm.setVisible(true);
         profeForm.getLabelNombreUsuario().setText("Se ha conectado como " + nombreUsr);
@@ -99,25 +99,39 @@ public class Formulario implements ActionListener {
         switch (tipoUsr){
             case "admin":
                 if (ae.getSource() == adminForm.getButtonAltaUsuario()) {
-                    
-                }
-                if (ae.getSource() == adminForm.getButtonModificarUsuario()) {
-                    
-                }
-                if (ae.getSource() == adminForm.getButtonBajaUsuario()) {
-                    
+                    adminVista = new AdminVista(admin);
+                    adminVista.abrirAltaUsuario();
+                    this.adminForm.dispose();
                 }
                 if (ae.getSource() == adminForm.getButtonAltaAsignatura()) {
-                    
+                    adminVista = new AdminVista(admin);
+                    adminVista.abrirAltaAsignatura();
+                    this.adminForm.dispose();
                 }
-                if (ae.getSource() == adminForm.getButtonModificarAsignatura()) {
-                    
+                if (ae.getSource() == adminForm.getButtonBajaUsuario()) {
+                    adminVista = new AdminVista(admin);
+                    adminVista.abrirBajaUsuario();
+                    this.adminForm.dispose();
                 }
                 if (ae.getSource() == adminForm.getButtonBajaAsignatura()) {
-                    
+                    adminVista = new AdminVista(admin);
+                    adminVista.abrirBajaAsignatura();
+                    this.adminForm.dispose();
+                }
+                if (ae.getSource() == adminForm.getButtonModificarUsuario()) {
+                    adminVista = new AdminVista(admin);
+                    adminVista.abrirModificarUsuario();
+                    this.adminForm.dispose();
+                }
+                if (ae.getSource() == adminForm.getButtonModificarAsignatura()) {
+                    adminVista = new AdminVista(admin);
+                    adminVista.abrirModificarAsignatura();
+                    this.adminForm.dispose();
                 }
                 if (ae.getSource() == adminForm.getButtonMatricularAlumno()) {
-                    
+                    adminVista = new AdminVista(admin);
+                    adminVista.abrirMatricularAlumno();
+                    this.adminForm.dispose();
                 }
                 break;
             case "alumn":

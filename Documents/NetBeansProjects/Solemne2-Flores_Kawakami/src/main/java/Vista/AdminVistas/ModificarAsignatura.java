@@ -5,6 +5,9 @@
  */
 package Vista.AdminVistas;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Asus
@@ -27,17 +30,37 @@ public class ModificarAsignatura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        labelNombreUsuario = new javax.swing.JLabel();
+        buttonReturn = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        labelNombreUsuario.setText("jLabel1");
+
+        buttonReturn.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelNombreUsuario)
+                    .addComponent(buttonReturn))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelNombreUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                .addComponent(buttonReturn)
+                .addContainerGap())
         );
 
         pack();
@@ -79,5 +102,17 @@ public class ModificarAsignatura extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonReturn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel labelNombreUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getLabelNombreUsuario() {
+        return labelNombreUsuario;
+    }
+
+    public JButton getButtonReturn() {
+        return buttonReturn;
+    }
+
 }

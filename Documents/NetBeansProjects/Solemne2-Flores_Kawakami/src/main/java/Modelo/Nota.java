@@ -34,6 +34,4 @@ public class Nota {
     public String toString() {
         return "" + trimestre + "," + nota;
     }
-    
-    
 }

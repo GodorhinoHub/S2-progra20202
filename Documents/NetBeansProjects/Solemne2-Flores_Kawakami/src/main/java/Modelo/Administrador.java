@@ -347,7 +347,7 @@ public class Administrador {
         }
     }
     
-    public boolean ModificarAsignatura(Asignatura asignatura, int nivel_id, int profesor_id){ // Se podrá modificar datos de una asignatura.
+    public boolean modificarAsignatura(Asignatura asignatura, int nivel_id, int profesor_id){ // Se podrá modificar datos de una asignatura.
         int update;
         ResultSet exists = con.consultarSi("*", "asignatura", "id", Integer.toString(asignatura.getId()));
         try {
@@ -373,6 +373,80 @@ public class Administrador {
             System.out.println(ex);
             return false;
         }
+    }
+    
+    public Administrador buscarAdmin(String login){
+        int id;
+        String Contrasena;
+        String Email;
+        ResultSet usuario = con.consultarSi("id,clave,email", "administrador", "login", "\'" + login + "\'");
+        try {
+            if (usuario.next()) {
+                id = usuario.getInt("id");
+                Contrasena = usuario.getString("email");
+                Email = usuario.getString("clave");
+                return new Administrador(id, login,Contrasena,Email, con);
+            }else{
+                System.out.println("No existe administrador");
+                return new Administrador(0, " "," "," ", con);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar administrador");
+            System.out.println(ex);
+            return new Administrador(0, " "," "," ", con);
+        }
+    }
+    
+    public Alumno buscarAlumn(String login){
+        int id;
+        String Contrasena;
+        String Nombre;
+        String Apellidos;
+        ResultSet usuario = con.consultarSi("id,nivel_id,clave,nombre,apellidos", "alumno", "login", "\'" + login + "\'");
+        try {
+            if (usuario.next()) {
+                id = usuario.getInt("id");
+                Contrasena = usuario.getString("clave");
+                Nombre = usuario.getString("nombre");
+                Apellidos = usuario.getString("apellidos");
+                return new Alumno(id, login, Contrasena, Nombre, Apellidos, con);
+            }else{
+                System.out.println("No existe el alumno");
+                return new Alumno(0, " ", " ", " ", " ", con);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar alumno");
+            System.out.println(ex);
+            return new Alumno(0, " ", " ", " ", " ", con);
+    }
+    }
+    
+    public Profesor buscarProfe(String login){
+        int id;
+        String Contrasena;
+        String Nombre;
+        String Apellidos;
+        String Email;
+        int Especialista;
+        ResultSet usuario = con.consultarSi("id,login,clave,nombre,apellidos,email,especialista", "profesor", "login", "\'" + login + "\'");
+        try {
+            if (usuario.next()) {
+                id = usuario.getInt("id");
+                Contrasena = usuario.getString("clave");
+                Nombre = usuario.getString("nombre");
+                Apellidos = usuario.getString("apellidos");
+                Email = usuario.getString("email");
+                Especialista = usuario.getInt("especialista");
+                return new Profesor(id, login, Contrasena,Nombre, Apellidos, Email, Especialista, con);
+            }else{
+                System.out.println("No existe el profesor");
+                return new Profesor(0, " ", " ", " ", " ", " ", 0, con);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar profesor");
+            System.out.println(ex);
+            return new Profesor(0, " ", " ", " ", " ", " ", 0, con);
+    }
     }
 
     public String toStringAlta() {
