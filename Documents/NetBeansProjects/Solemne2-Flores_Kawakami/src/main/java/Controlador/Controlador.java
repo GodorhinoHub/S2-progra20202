@@ -105,17 +105,9 @@ public class Controlador implements ActionListener{
     
     public void Prueba() throws SQLException{
         System.out.println("Prueba iniciado");
-        Administrador admin = new Administrador(501,"echo", "echo", "echo", modelo);
+        //Administrador admin = new Administrador(501,"echo", "echo", "echo", modelo);
         //Asignatura as = new Asignatura(2181,"Filosofía");
         //DefaultListModel a = al.listarProfesores(23);
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println(admin.buscarAdmin("10658-8").toString());
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println(admin.buscarAlumn("cbernalesa").toString());
-        System.out.println("------------------------------------------------------------------------");
-        System.out.println(admin.buscarProfe("168574").toString());
-        System.out.println("------------------------------------------------------------------------");
-        
         System.out.println("Prueba terminado");
     }
 

@@ -1,9 +1,7 @@
 package Modelo;
 
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Administrador {
     private int id;
@@ -160,7 +158,7 @@ public class Administrador {
         }
     }
     
-    public boolean matricularAlumno(int alumno_id, int asignatura_id, int id_nota) throws SQLException{ // Se podrá matricular a los alumnos en las distintas asignaturas.
+    public boolean matricularAlumno(int alumno_id, int asignatura_id) throws SQLException{ // Se podrá matricular a los alumnos en las distintas asignaturas.
         int insert;
         
         try {
@@ -192,9 +190,9 @@ public class Administrador {
                     "asignatura_id", Integer.toString(asignatura_id) + " AND alumno_id = " + Integer.toString(alumno_id));
             if(!exists.next()){
                 insert = con.Insertar("asignatura_has_alumno",
-                        "(" + Integer.toString(asignatura_id) + "," + Integer.toString(alumno_id) + "," + Integer.toString(id_nota) + ")");
+                        "(" + Integer.toString(asignatura_id) + "," + Integer.toString(alumno_id) + "," + Integer.toString(0) + ")");
                 if (insert != 0 ) {
-                    System.out.println("Matriula completa");
+                    System.out.println("Matricula completa");
                     return true;
                 }else{
                     System.out.println("Error al matricular");

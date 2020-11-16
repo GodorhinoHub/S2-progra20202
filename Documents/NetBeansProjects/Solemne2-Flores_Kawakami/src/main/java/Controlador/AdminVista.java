@@ -8,10 +8,6 @@ import Vista.AdminVistas.*;
 public class AdminVista implements ActionListener{
     private AltaUsuario aUsuario;
     private AltaAsignatura aAsignatura;
-    private BajaUsuario bUsuario;
-    private BajaAsignatura bAsignatura;
-    private ModificarUsuario mUsuario;
-    private ModificarAsignatura mAsignatura;
     private MatricularAlumno mAlumno;
     private Formulario form;
     private Administrador admin;
@@ -23,85 +19,58 @@ public class AdminVista implements ActionListener{
     }
     
     // Open Functions
-    public void abrirAltaUsuario(){
+    public void abrirUsuario(){
         tarea = "aUsuario";
         aUsuario = new AltaUsuario();
         aUsuario.setTitle("Formulario de administrador/AltaUsuario");
         aUsuario.setLocationRelativeTo(null);
         aUsuario.setVisible(true);
         aUsuario.getLabelNombreUsuario().setText("Se ha conectado como Admin");
+        aUsuario.getLabelEstado().setText("Preparado");
         
+        
+        aUsuario.getRadioAdmin().addActionListener(this);
+        aUsuario.getRadioAlumn().addActionListener(this);
+        aUsuario.getRadioProfe().addActionListener(this);
+        
+        aUsuario.getButtonAlta().addActionListener(this);
+        aUsuario.getButtonBuscar().addActionListener(this);
+        aUsuario.getButtonBaja().addActionListener(this);
+        aUsuario.getButtonModificar().addActionListener(this);
         aUsuario.getButtonReturn().addActionListener(this);
     }
     
-    public void abrirAltaAsignatura(){
+    public void abrirAsignatura(){
         tarea = "aAsignatura";
         aAsignatura = new AltaAsignatura();
         aAsignatura.setTitle("Formulario de administrador/AltaAsignatura");
         aAsignatura.setLocationRelativeTo(null);
         aAsignatura.setVisible(true);
         aAsignatura.getLabelNombreUsuario().setText("Se ha conectado como Admin");
+        aAsignatura.getLabelEstado().setText("Preparado");
         
+        aAsignatura.getButtonAlta().addActionListener(this);
+        aAsignatura.getButtonBuscar().addActionListener(this);
+        aAsignatura.getButtonBaja().addActionListener(this);
+        aAsignatura.getButtonModificar().addActionListener(this);
         aAsignatura.getButtonReturn().addActionListener(this);
     }
     
-    public void abrirBajaUsuario(){
-        tarea = "bUsuario";
-        bUsuario = new BajaUsuario();
-        bUsuario.setTitle("Formulario de administrador/BajaUsuario");
-        bUsuario.setLocationRelativeTo(null);
-        bUsuario.setVisible(true);
-        bUsuario.getLabelNombreUsuario().setText("Se ha conectado como Admin");
-        
-        bUsuario.getButtonReturn().addActionListener(this);
-    }
-    
-    public void abrirBajaAsignatura(){
-        tarea = "bAsignatura";
-        bAsignatura = new BajaAsignatura();
-        bAsignatura.setTitle("Formulario de administrador/BajaAsignatura");
-        bAsignatura.setLocationRelativeTo(null);
-        bAsignatura.setVisible(true);
-        bAsignatura.getLabelNombreUsuario().setText("Se ha conectado como Admin");
-        
-        bAsignatura.getButtonReturn().addActionListener(this);
-    }
-    
-    public void abrirModificarUsuario(){
-        tarea = "mUsuario";
-        mUsuario = new ModificarUsuario();
-        mUsuario.setTitle("Formulario de administrador/ModificarUsuario");
-        mUsuario.setLocationRelativeTo(null);
-        mUsuario.setVisible(true);
-        mUsuario.getLabelNombreUsuario().setText("Se ha conectado como Admin");
-        
-        mUsuario.getButtonReturn().addActionListener(this);
-    }
-    
-    public void abrirModificarAsignatura(){
-        tarea = "mAsignatura";
-        mAsignatura = new ModificarAsignatura();
-        mAsignatura.setTitle("Formulario de administrador/ModificarAsignatura");
-        mAsignatura.setLocationRelativeTo(null);
-        mAsignatura.setVisible(true);
-        mAsignatura.getLabelNombreUsuario().setText("Se ha conectado como Admin");
-        
-        mAsignatura.getButtonReturn().addActionListener(this);
-    }
-    
-    public void abrirMatricularAlumno(){
+    public void abrirMatricular(){
         tarea = "mAlumno";
         mAlumno = new MatricularAlumno();
         mAlumno.setTitle("Formulario de administrador/MatricularAlumno");
         mAlumno.setLocationRelativeTo(null);
         mAlumno.setVisible(true);
         mAlumno.getLabelNombreUsuario().setText("Se ha conectado como Admin");
+        mAlumno.getLabelEstado().setText("Preparado");
         
+        mAlumno.getButtonMatricular().addActionListener(this);
         mAlumno.getButtonReturn().addActionListener(this);
     }
     
     // Functions
-    public void actionAusuario(ActionEvent ae){
+    public void actionUsuario(ActionEvent ae){
         
         
         if (ae.getSource() == aUsuario.getButtonReturn()) {
@@ -111,7 +80,7 @@ public class AdminVista implements ActionListener{
         }
     }
     
-    public void actionAasignatura(ActionEvent ae){
+    public void actionAsignatura(ActionEvent ae){
         
         
         
@@ -119,46 +88,6 @@ public class AdminVista implements ActionListener{
             form = new Formulario(admin);
             form.abrirInterfaz();
             this.aAsignatura.dispose();
-        }
-    }
-    
-    public void actionBusuario(ActionEvent ae){
-        
-        
-        if (ae.getSource() == bUsuario.getButtonReturn()) {
-            form = new Formulario(admin);
-            form.abrirInterfaz();
-            this.bUsuario.dispose();
-        }
-    }
-    
-    public void actionBasignatura(ActionEvent ae){
-        
-        
-        if (ae.getSource() == bAsignatura.getButtonReturn()) {
-            form = new Formulario(admin);
-            form.abrirInterfaz();
-            this.bAsignatura.dispose();
-        }
-    }
-    
-    public void actionMusuario(ActionEvent ae){
-        
-        
-        if (ae.getSource() == mUsuario.getButtonReturn()) {
-            form = new Formulario(admin);
-            form.abrirInterfaz();
-            this.mUsuario.dispose();
-        }
-    }
-    
-    public void actionMasignatura(ActionEvent ae){
-        
-        
-        if (ae.getSource() == mAsignatura.getButtonReturn()) {
-            form = new Formulario(admin);
-            form.abrirInterfaz();
-            this.mAsignatura.dispose();
         }
     }
     
@@ -176,22 +105,10 @@ public class AdminVista implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         switch (tarea){
                 case "aUsuario":
-                    this.actionAusuario(ae);
+                    this.actionUsuario(ae);
                     break;
                 case "aAsignatura":
-                    this.actionAasignatura(ae);
-                    break;
-                case "bUsuario":
-                    this.actionBusuario(ae);
-                    break;
-                case "bAsignatura":
-                    this.actionBasignatura(ae);
-                    break;
-                case "mUsuario":
-                    this.actionMusuario(ae);
-                    break;
-                case "mAsignatura":
-                    this.actionMasignatura(ae);
+                    this.actionAsignatura(ae);
                     break;
                 case "mAlumno":
                     this.actionMalumno(ae);

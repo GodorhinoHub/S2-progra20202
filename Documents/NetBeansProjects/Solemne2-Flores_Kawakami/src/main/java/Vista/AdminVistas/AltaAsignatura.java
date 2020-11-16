@@ -7,6 +7,8 @@ package Vista.AdminVistas;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -31,13 +33,51 @@ public class AltaAsignatura extends javax.swing.JFrame {
     private void initComponents() {
 
         labelNombreUsuario = new javax.swing.JLabel();
+        labelEstado = new javax.swing.JLabel();
         buttonReturn = new javax.swing.JButton();
+        buttonAlta = new javax.swing.JButton();
+        buttonBaja = new javax.swing.JButton();
+        buttonModificar = new javax.swing.JButton();
+        buttonBuscar = new javax.swing.JToggleButton();
+        fieldId = new javax.swing.JTextField();
+        fieldNombre = new javax.swing.JTextField();
+        fieldNivel = new javax.swing.JTextField();
+        fieldProfesor = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelNombreUsuario.setText("jLabel1");
 
-        buttonReturn.setText("jButton1");
+        labelEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEstado.setText("jLabel1");
+
+        buttonReturn.setText("<Volver");
+
+        buttonAlta.setText("Alta");
+
+        buttonBaja.setText("Baja");
+
+        buttonModificar.setText("Modificar");
+
+        buttonBuscar.setText("Buscar");
+
+        fieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Id");
+
+        jLabel2.setText("Nombre");
+
+        jLabel3.setText("Nivel");
+
+        jLabel4.setText("Profesor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,22 +86,86 @@ public class AltaAsignatura extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelNombreUsuario)
-                    .addComponent(buttonReturn))
-                .addContainerGap(317, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreUsuario)
+                            .addComponent(buttonReturn)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(fieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(fieldId)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4)
+                                            .addComponent(buttonAlta))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(fieldProfesor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                                            .addComponent(fieldNivel, javax.swing.GroupLayout.Alignment.LEADING)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(buttonBaja)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(12, 12, 12)
+                                                .addComponent(buttonBuscar))
+                                            .addComponent(buttonModificar))))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(labelEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelNombreUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldProfesor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(26, 26, 26)
+                .addComponent(labelEstado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAlta)
+                    .addComponent(buttonBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonBaja)
+                    .addComponent(buttonModificar))
+                .addGap(30, 30, 30)
                 .addComponent(buttonReturn)
-                .addContainerGap())
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,7 +203,20 @@ public class AltaAsignatura extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAlta;
+    private javax.swing.JButton buttonBaja;
+    private javax.swing.JToggleButton buttonBuscar;
+    private javax.swing.JButton buttonModificar;
     private javax.swing.JButton buttonReturn;
+    private javax.swing.JTextField fieldId;
+    private javax.swing.JTextField fieldNivel;
+    private javax.swing.JTextField fieldNombre;
+    private javax.swing.JTextField fieldProfesor;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel labelEstado;
     private javax.swing.JLabel labelNombreUsuario;
     // End of variables declaration//GEN-END:variables
 
@@ -109,6 +226,42 @@ public class AltaAsignatura extends javax.swing.JFrame {
 
     public JButton getButtonReturn() {
         return buttonReturn;
+    }
+
+    public JButton getButtonAlta() {
+        return buttonAlta;
+    }
+
+    public JButton getButtonBaja() {
+        return buttonBaja;
+    }
+
+    public JToggleButton getButtonBuscar() {
+        return buttonBuscar;
+    }
+
+    public JButton getButtonModificar() {
+        return buttonModificar;
+    }
+
+    public JTextField getFieldId() {
+        return fieldId;
+    }
+
+    public JTextField getFieldNivel() {
+        return fieldNivel;
+    }
+
+    public JTextField getFieldNombre() {
+        return fieldNombre;
+    }
+
+    public JTextField getFieldProfesor() {
+        return fieldProfesor;
+    }
+
+    public JLabel getLabelEstado() {
+        return labelEstado;
     }
 
 }

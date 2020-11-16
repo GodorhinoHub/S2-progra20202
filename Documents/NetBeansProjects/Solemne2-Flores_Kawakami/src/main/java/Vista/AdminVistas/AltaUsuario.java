@@ -5,8 +5,11 @@
  */
 package Vista.AdminVistas;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -30,14 +33,79 @@ public class AltaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonsUsr = new javax.swing.ButtonGroup();
         labelNombreUsuario = new javax.swing.JLabel();
+        labelEstado = new javax.swing.JLabel();
         buttonReturn = new javax.swing.JButton();
+        buttonAlta = new javax.swing.JButton();
+        buttonBaja = new javax.swing.JButton();
+        buttonModificar = new javax.swing.JButton();
+        buttonBuscar = new javax.swing.JButton();
+        radioAdmin = new javax.swing.JRadioButton();
+        radioAlumn = new javax.swing.JRadioButton();
+        radioProfe = new javax.swing.JRadioButton();
+        fieldId = new javax.swing.JTextField();
+        fieldLogin = new javax.swing.JTextField();
+        fieldContrasena = new javax.swing.JTextField();
+        fieldEmail = new javax.swing.JTextField();
+        fieldNombre = new javax.swing.JTextField();
+        fieldApellidos = new javax.swing.JTextField();
+        fieldEspecialista = new javax.swing.JTextField();
+        fieldNivel = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelNombreUsuario.setText("jLabel1");
 
-        buttonReturn.setText("jButton1");
+        labelEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelEstado.setText("jLabel1");
+
+        buttonReturn.setText("<Volver");
+
+        buttonAlta.setText("Alta");
+
+        buttonBaja.setText("Baja");
+
+        buttonModificar.setText("Modificar");
+
+        buttonBuscar.setText("Buscar");
+
+        buttonsUsr.add(radioAdmin);
+        radioAdmin.setText("Administrador");
+
+        buttonsUsr.add(radioAlumn);
+        radioAlumn.setText("Alumno");
+
+        buttonsUsr.add(radioProfe);
+        radioProfe.setText("Profesor");
+
+        fieldEmail.setText("jTextField1");
+
+        fieldEspecialista.setText("jTextField1");
+
+        jLabel1.setText("Id");
+
+        jLabel2.setText("Login");
+
+        jLabel3.setText("Clave");
+
+        jLabel4.setText("Email");
+
+        jLabel5.setText("Nombre");
+
+        jLabel6.setText("Apellidos");
+
+        jLabel7.setText("Especialista");
+
+        jLabel8.setText("Nivel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,18 +114,124 @@ public class AltaUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelNombreUsuario)
-                    .addComponent(buttonReturn))
-                .addContainerGap(317, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonReturn)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(radioAlumn)
+                                                .addGap(56, 56, 56))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(radioProfe)
+                                                .addGap(37, 37, 37))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(radioAdmin)
+                                                .addGap(18, 18, 18)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(jLabel1))
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(fieldLogin)
+                                            .addComponent(fieldContrasena)
+                                            .addComponent(fieldEmail)
+                                            .addComponent(fieldId))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(buttonAlta)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(buttonBuscar)
+                                        .addGap(38, 38, 38)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel8))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(fieldNombre)
+                                            .addComponent(fieldApellidos)
+                                            .addComponent(fieldEspecialista)
+                                            .addComponent(fieldNivel)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(buttonBaja)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(buttonModificar))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelNombreUsuario)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(labelEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelNombreUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(fieldNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldEspecialista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(fieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(radioAdmin))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(radioAlumn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radioProfe)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelEstado)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonModificar)
+                    .addComponent(buttonBaja)
+                    .addComponent(buttonAlta)
+                    .addComponent(buttonBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonReturn)
-                .addContainerGap())
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -99,8 +273,33 @@ public class AltaUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAlta;
+    private javax.swing.JButton buttonBaja;
+    private javax.swing.JButton buttonBuscar;
+    private javax.swing.JButton buttonModificar;
     private javax.swing.JButton buttonReturn;
+    private javax.swing.ButtonGroup buttonsUsr;
+    private javax.swing.JTextField fieldApellidos;
+    private javax.swing.JTextField fieldContrasena;
+    private javax.swing.JTextField fieldEmail;
+    private javax.swing.JTextField fieldEspecialista;
+    private javax.swing.JTextField fieldId;
+    private javax.swing.JTextField fieldLogin;
+    private javax.swing.JTextField fieldNivel;
+    private javax.swing.JTextField fieldNombre;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel labelEstado;
     private javax.swing.JLabel labelNombreUsuario;
+    private javax.swing.JRadioButton radioAdmin;
+    private javax.swing.JRadioButton radioAlumn;
+    private javax.swing.JRadioButton radioProfe;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getLabelNombreUsuario() {
@@ -109,6 +308,74 @@ public class AltaUsuario extends javax.swing.JFrame {
 
     public JButton getButtonReturn() {
         return buttonReturn;
+    }
+
+    public JButton getButtonAlta() {
+        return buttonAlta;
+    }
+
+    public JButton getButtonBaja() {
+        return buttonBaja;
+    }
+
+    public JButton getButtonBuscar() {
+        return buttonBuscar;
+    }
+
+    public JButton getButtonModificar() {
+        return buttonModificar;
+    }
+
+    public ButtonGroup getButtonsUsr() {
+        return buttonsUsr;
+    }
+
+    public JTextField getFieldApellidos() {
+        return fieldApellidos;
+    }
+
+    public JTextField getFieldContrasena() {
+        return fieldContrasena;
+    }
+
+    public JTextField getFieldEmail() {
+        return fieldEmail;
+    }
+
+    public JTextField getFieldEspecialista() {
+        return fieldEspecialista;
+    }
+
+    public JTextField getFieldId() {
+        return fieldId;
+    }
+
+    public JTextField getFieldLogin() {
+        return fieldLogin;
+    }
+
+    public JTextField getFieldNivel() {
+        return fieldNivel;
+    }
+
+    public JTextField getFieldNombre() {
+        return fieldNombre;
+    }
+
+    public JLabel getLabelEstado() {
+        return labelEstado;
+    }
+
+    public JRadioButton getRadioAdmin() {
+        return radioAdmin;
+    }
+
+    public JRadioButton getRadioAlumn() {
+        return radioAlumn;
+    }
+
+    public JRadioButton getRadioProfe() {
+        return radioProfe;
     }
 
 }
