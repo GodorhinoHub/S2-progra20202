@@ -4,6 +4,7 @@ import Modelo.*;
 import java.awt.event.*;
 import Vista.*;
 import Vista.AdminVistas.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class AdminVista implements ActionListener{
@@ -93,8 +94,18 @@ public class AdminVista implements ActionListener{
     }
     
     public void actionAsignatura(ActionEvent ae){
-        
-        
+        if (ae.getSource() == aAsignatura.getButtonAlta()) {
+            aAsignatura();
+        }
+        if (ae.getSource() == aAsignatura.getButtonBuscar()) {
+            buAsignatura();
+        }
+        if (ae.getSource() == aAsignatura.getButtonBaja()) {
+            bAsignatura();
+        }
+        if (ae.getSource() == aAsignatura.getButtonModificar()) {
+            mAsignatura();
+        }
         
         if (ae.getSource() == aAsignatura.getButtonReturn()) {
             form = new Formulario(admin);
@@ -104,7 +115,9 @@ public class AdminVista implements ActionListener{
     }
     
     public void actionMalumno(ActionEvent ae){
-        
+        if (ae.getSource() == mAlumno.getButtonMatricular()) {
+            mAlumno();
+        }
         
         if (ae.getSource() == mAlumno.getButtonReturn()) {
             form = new Formulario(admin);
@@ -199,6 +212,10 @@ public class AdminVista implements ActionListener{
             aUsuario.getFieldId().setText(Integer.toString(buscado.getId()));
             aUsuario.getFieldContrasena().setText(buscado.getContrasena());
             aUsuario.getFieldEmail().setText(buscado.getEmail());
+            aUsuario.getFieldNombre().setText("");
+            aUsuario.getFieldApellidos().setText("");
+            aUsuario.getFieldNivel().setText("");
+            aUsuario.getFieldEspecialista().setText("");
             int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar al usuario?", "Alerta!", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
                 admin.bajaUsuario(buscado.getId(), "administrador");
@@ -214,6 +231,8 @@ public class AdminVista implements ActionListener{
             aUsuario.getFieldNombre().setText(buscado.getNombre());
             aUsuario.getFieldApellidos().setText(buscado.getApellidos());
             aUsuario.getFieldNivel().setText(buscado.getNivel());
+            aUsuario.getFieldEmail().setText("");
+            aUsuario.getFieldEspecialista().setText("");
             int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar al usuario?", "Alerta!", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
                 admin.bajaUsuario(buscado.getId(), "alumno");
@@ -230,6 +249,7 @@ public class AdminVista implements ActionListener{
             aUsuario.getFieldApellidos().setText(buscado.getApellidos());
             aUsuario.getFieldEmail().setText(buscado.getEmail());
             aUsuario.getFieldEspecialista().setText(Integer.toString(buscado.getEspecialista()));
+            aUsuario.getFieldNivel().setText("");
             int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar al usuario?", "Alerta!", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
                 admin.bajaUsuario(buscado.getId(), "profesor");
@@ -247,7 +267,7 @@ public class AdminVista implements ActionListener{
             String clave = aUsuario.getFieldContrasena().getText();
             String email = aUsuario.getFieldEmail().getText();
             if (admin.modificarUsuario(new Administrador(id,login,clave,email,admin.getCon()))) {
-                System.out.println("Admin agregado");
+                System.out.println("Administrador modificado");
             }
             
         }
@@ -259,7 +279,7 @@ public class AdminVista implements ActionListener{
             String apellidos = aUsuario.getFieldApellidos().getText();
             String nivel = aUsuario.getFieldNivel().getText();
             if (admin.modificarUsuario(new Alumno(id,login,clave,nombre,apellidos,admin.getCon()),nivel)) {
-                System.out.println("Alumno agregado");
+                System.out.println("Alumno modificado");
             }
             
         }
@@ -272,7 +292,7 @@ public class AdminVista implements ActionListener{
             String email = aUsuario.getFieldEmail().getText();
             int especialista = Integer.parseInt(aUsuario.getFieldEspecialista().getText());
             if (admin.modificarUsuario(new Profesor(id,login, clave, nombre, apellidos, email, especialista,admin.getCon()))) {
-                System.out.println("Profesor agregado");
+                System.out.println("Profesor modificado");
             }
             
         }
@@ -282,17 +302,57 @@ public class AdminVista implements ActionListener{
     }
     
     public void aAsignatura(){
+        int id = Integer.parseInt(aAsignatura.getFieldId().getText());
+        String nombre = aAsignatura.getFieldNombre().getText();
+        String nivel = aAsignatura.getFieldNivel().getText();
+        String profesor = aAsignatura.getFieldProfesor().getText();
+        if (admin.altaAsignatura(new Asignatura(id,nombre),nivel,profesor)) {
+            System.out.println("Asignatura agregada");
+        }
+        
+    }
+    public void buAsignatura(){
+        String id = aAsignatura.getFieldId().getText();
+        ArrayList<String> buscado = admin.buscarAsignatura(id);
+            
+        aAsignatura.getFieldId().setText(id);
+        aAsignatura.getFieldNombre().setText(buscado.get(3));
+        aAsignatura.getFieldNivel().setText(buscado.get(1));
+        aAsignatura.getFieldProfesor().setText(buscado.get(2));
+            
         
     }
     public void bAsignatura(){
+        String id = aAsignatura.getFieldId().getText();
+        ArrayList<String> buscado = admin.buscarAsignatura(id);
+            
+        aAsignatura.getFieldId().setText(id);
+        aAsignatura.getFieldNombre().setText(buscado.get(3));
+        aAsignatura.getFieldNivel().setText(buscado.get(1));
+        aAsignatura.getFieldProfesor().setText(buscado.get(2));
+        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar la asignatura?", "Alerta!", JOptionPane.YES_NO_OPTION);
+        if (resp == 0) {
+            admin.bajaAsignatura(Integer.parseInt(id));
+        }
         
     }
     public void mAsignatura(){
+        int id = Integer.parseInt(aAsignatura.getFieldId().getText());
+        String nombre = aAsignatura.getFieldNombre().getText();
+        String nivel = aAsignatura.getFieldNivel().getText();
+        String profesor = aAsignatura.getFieldProfesor().getText();
+        if (admin.modificarAsignatura(new Asignatura(id,nombre),nivel,profesor)) {
+            System.out.println("Asignatura Modificada");
+        }
         
     }
     
     public void mAlumno(){
-        
+        String alumno_id = mAlumno.getFieldId().getText();
+        String asignatura_id = mAlumno.getFieldAsignatura().getText();
+        if (admin.matricularAlumno(alumno_id,asignatura_id)) {
+            System.out.println("Alumno matriculado");
+        }
     }
     
     @Override

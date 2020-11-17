@@ -28,7 +28,7 @@ public class Asignatura {
         this.Nombre = Nombre;
     }
     
-    public String toStringAlta(int nivel_id, int profesor_id) {
+    public String toStringAlta(String nivel_id, String profesor_id) {
         return id + "," + nivel_id + "," + profesor_id + ",\'" + Nombre + "\'";
     }
 

@@ -32,7 +32,6 @@ public class Profesor {
         this.Apellidos = Apellidos;
         this.Email = Email;
         this.Especialista = Especialista;
-        this.con = con;
     }
 
     // Getters

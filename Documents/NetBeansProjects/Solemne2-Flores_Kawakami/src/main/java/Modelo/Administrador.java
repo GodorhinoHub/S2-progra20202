@@ -2,6 +2,7 @@ package Modelo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Administrador {
     private int id;
@@ -23,7 +24,6 @@ public class Administrador {
         this.Login = Login;
         this.Contrasena = Contrasena;
         this.Email = Email;
-        this.con = con;
     }
     
     // Getters  
@@ -138,7 +138,7 @@ public class Administrador {
         }
     }
     
-    public boolean altaAsignatura(Asignatura asignatura, int nivel_id, int profesor_id){ // Se podrá dar de alta asignaturas.
+    public boolean altaAsignatura(Asignatura asignatura, String nivel_id, String profesor_id){ // Se podrá dar de alta asignaturas.
         int insert;
         ResultSet exists = con.consultarSi("*", "asignatura", "id", "\'" + asignatura.getId()+ "\'");
         try {
@@ -162,11 +162,10 @@ public class Administrador {
         }
     }
     
-    public boolean matricularAlumno(int alumno_id, int asignatura_id) throws SQLException{ // Se podrá matricular a los alumnos en las distintas asignaturas.
+    public boolean matricularAlumno(String alumno_id, String asignatura_id){ // Se podrá matricular a los alumnos en las distintas asignaturas.
         int insert;
-        
         try {
-            ResultSet alumnoExists = con.consultarSi("*", "alumno", "id", Integer.toString(alumno_id));
+            ResultSet alumnoExists = con.consultarSi("*", "alumno", "id", alumno_id);
             if (!alumnoExists.next() ) {
                 System.out.println("Alumno no existe");
                 return false;
@@ -178,7 +177,7 @@ public class Administrador {
         }
         
         try {
-            ResultSet asignaturaExists = con.consultarSi("*", "asignatura", "id", Integer.toString(asignatura_id));
+            ResultSet asignaturaExists = con.consultarSi("*", "asignatura", "id", asignatura_id);
             if (!asignaturaExists.next() ) {
                 System.out.println("Asignatura no existe");
                 return false;
@@ -191,11 +190,12 @@ public class Administrador {
         
         try {
             ResultSet exists = con.consultarSi("*", "asignatura_has_alumno",
-                    "asignatura_id", Integer.toString(asignatura_id) + " AND alumno_id = " + Integer.toString(alumno_id));
+                    "asignatura_id", asignatura_id + " AND alumno_id = " + alumno_id);
             if(!exists.next()){
                 insert = con.Insertar("asignatura_has_alumno",
-                        "(" + Integer.toString(asignatura_id) + "," + Integer.toString(alumno_id) + "," + Integer.toString(0) + ")");
+                        "(" + asignatura_id + "," + alumno_id + "," + Integer.toString(0) + ")");
                 if (insert != 0 ) {
+                    System.out.println(insert);
                     System.out.println("Matricula completa");
                     return true;
                 }else{
@@ -350,14 +350,14 @@ public class Administrador {
         }
     }
     
-    public boolean modificarAsignatura(Asignatura asignatura, int nivel_id, int profesor_id){ // Se podrá modificar datos de una asignatura.
+    public boolean modificarAsignatura(Asignatura asignatura, String nivel_id, String profesor_id){ // Se podrá modificar datos de una asignatura.
         int update;
         ResultSet exists = con.consultarSi("*", "asignatura", "id", Integer.toString(asignatura.getId()));
         try {
             if(exists.next()){
                 update = con.Actualizar("asignatura",
-                            "nivel_id = \'" + Integer.toString(nivel_id)+ "\'" +
-                            ",profesor_id = \'" + Integer.toString(profesor_id)+ "\'" +
+                            "nivel_id = \'" + nivel_id+ "\'" +
+                            ",profesor_id = \'" + profesor_id+ "\'" +
                             ",nombre = \'" + asignatura.getNombre()+ "\'",
                         "id", Integer.toString(asignatura.getId()));
                 if (update != 0 ) {
@@ -451,9 +451,38 @@ public class Administrador {
             System.out.println("Error al buscar profesor");
             System.out.println(ex);
             return new Profesor(0, " ", " ", " ", " ", " ", 0, con);
+        }
     }
+    
+    public ArrayList<String> buscarAsignatura(String id){
+        ArrayList<String> arr = new ArrayList<String>();
+        ResultSet usuario = con.consultarSi("id,nivel_id,profesor_id,nombre", "asignatura", "id", "\'" + id + "\'");
+        try {
+            if (usuario.next()) {
+                arr.add(usuario.getString("id"));
+                arr.add(usuario.getString("nivel_id"));
+                arr.add(usuario.getString("profesor_id"));
+                arr.add(usuario.getString("nombre"));
+                return arr;
+            }else{
+                System.out.println("No existe el asignatura");
+                arr.add("");
+                arr.add("");
+                arr.add("");
+                arr.add("");
+                return arr;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar asignatura");
+            System.out.println(ex);
+                arr.add("");
+                arr.add("");
+                arr.add("");
+                arr.add("");
+            return arr;
+        }
     }
-
+    
     public String toStringAlta() {
         return "\'" + Login + "\', \'" + Contrasena + "\', \'" + Email + "\'";
     }

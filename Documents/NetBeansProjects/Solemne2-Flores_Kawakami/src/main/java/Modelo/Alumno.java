@@ -27,7 +27,6 @@ public class Alumno {
         this.Contrasena = Contrasena;
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
-        this.con = con;
     }
 
     // Getters
