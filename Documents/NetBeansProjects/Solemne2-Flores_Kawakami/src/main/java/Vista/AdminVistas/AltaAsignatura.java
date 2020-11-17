@@ -65,6 +65,8 @@ public class AltaAsignatura extends javax.swing.JFrame {
 
         buttonBuscar.setText("Buscar");
 
+        fieldId.setEditable(false);
+
         fieldNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldNombreActionPerformed(evt);
@@ -88,7 +90,6 @@ public class AltaAsignatura extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNombreUsuario)
                             .addComponent(buttonReturn)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(21, 21, 21)
@@ -115,13 +116,13 @@ public class AltaAsignatura extends javax.swing.JFrame {
                                         .addComponent(buttonBaja)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(12, 12, 12)
-                                                .addComponent(buttonBuscar))
+                                            .addComponent(buttonBuscar)
                                             .addComponent(buttonModificar))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(labelEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(26, 38, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -152,9 +153,9 @@ public class AltaAsignatura extends javax.swing.JFrame {
                     .addComponent(buttonAlta)
                     .addComponent(buttonBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonBaja)
-                    .addComponent(buttonModificar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonModificar)
+                    .addComponent(buttonBaja))
                 .addGap(30, 30, 30)
                 .addComponent(buttonReturn)
                 .addGap(27, 27, 27))

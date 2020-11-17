@@ -68,9 +68,6 @@ public class MatricularAlumno extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(labelNombreUsuario))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(buttonReturn))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -89,6 +86,9 @@ public class MatricularAlumno extends javax.swing.JFrame {
                 .addGap(0, 44, Short.MAX_VALUE)
                 .addComponent(labelEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(labelNombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

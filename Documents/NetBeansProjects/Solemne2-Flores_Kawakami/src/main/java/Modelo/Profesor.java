@@ -25,7 +25,7 @@ public class Profesor {
         this.con = con;
     }
     
-    public Profesor(String Login, String Contrasena, String Nombre, String Apellidos, String Email, int Especialista, OperacionesBD con) {
+    public Profesor(String Login, String Contrasena, String Nombre, String Apellidos, String Email, int Especialista) {
         this.Login = Login;
         this.Contrasena = Contrasena;
         this.Nombre = Nombre;
@@ -33,7 +33,7 @@ public class Profesor {
         this.Email = Email;
         this.Especialista = Especialista;
         this.con = con;
-    }   
+    }
 
     // Getters
     public int getId() {
@@ -62,6 +62,10 @@ public class Profesor {
 
     public int getEspecialista() {
         return Especialista;
+    }
+
+    public OperacionesBD getCon() {    
+        return con;
     }
     
     // Setters

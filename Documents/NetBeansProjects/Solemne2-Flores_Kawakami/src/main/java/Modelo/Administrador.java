@@ -19,7 +19,7 @@ public class Administrador {
         this.con = con;
     }
     
-    public Administrador(String Login, String Contrasena, String Email, OperacionesBD con) {
+    public Administrador(String Login, String Contrasena, String Email) {
         this.Login = Login;
         this.Contrasena = Contrasena;
         this.Email = Email;
@@ -43,6 +43,10 @@ public class Administrador {
     public String getEmail() {    
         return Email;
     }
+
+    public OperacionesBD getCon() {    
+        return con;
+    }
     
     // Setters
     public void setId(int id) {
@@ -64,7 +68,7 @@ public class Administrador {
     // Functions
     public boolean altaUsuario(Administrador administrador) { // Se podrá dar de alta usuarios.
         int insert;
-        ResultSet exists = con.consultarSi("*", "administrador", "login", "\'" + administrador.getLogin());
+        ResultSet exists = con.consultarSi("*", "administrador", "login", "" + administrador.getLogin());
         try {
             if (exists.next()) {
                 System.out.println("Administrador ya se encuentra dado de alta");
@@ -86,7 +90,7 @@ public class Administrador {
         }
     }
     
-    public boolean altaUsuario(Alumno alumno, int nivel_id) { // Se podrá dar de alta usuarios.
+    public boolean altaUsuario(Alumno alumno, String nivel_id) { // Se podrá dar de alta usuarios.
         int insert;
         ResultSet exists = con.consultarSi("*", "alumno", "login", "\'" + alumno.getLogin()+ "\'");
         try {
@@ -94,7 +98,7 @@ public class Administrador {
                 System.out.println("Alumno ya se encuentra dado de alta");
                 return false;
             }else{
-                insert = con.Insertar("alumno (nivel_id,login,clave,nombre,apellidos)","(" + Integer.toString(nivel_id) + alumno.toStringAlta() + ")");
+                insert = con.Insertar("alumno (nivel_id,login,clave,nombre,apellidos)","(" + nivel_id + alumno.toStringAlta() + ")");
                 if (insert != 0) {
                     System.out.println("Alumno dado de alta con éxito");
                     return true;
@@ -209,12 +213,12 @@ public class Administrador {
         }
     }
     
-    public boolean bajaUsuario(int id, String usuario){ // Se podrá dar de baja un usuario.
+    public boolean bajaUsuario(int id, String tabla){ // Se podrá dar de baja un usuario.
         int delet;
-        ResultSet exists = con.consultarSi("*", usuario, "id", Integer.toString(id));
+        ResultSet exists = con.consultarSi("*", tabla, "id", Integer.toString(id));
         try {
             if(exists.next()){
-                delet = con.Eliminar(usuario, "id", Integer.toString(id));
+                delet = con.Eliminar(tabla, "id", Integer.toString(id));
                 if(delet != 0){
                     System.out.println("Borrado exitoso");
                     return true;
@@ -259,7 +263,7 @@ public class Administrador {
     
     public boolean modificarUsuario(Administrador administrador){ // Se podrá modificar datos de un usuario.
         int update;
-        ResultSet exists = con.consultarSi("*", "administrador", "id", Integer.toString(administrador.getId()));
+        ResultSet exists = con.consultarSi("id", "administrador", "id", Integer.toString(administrador.getId()));
         try {
             if(exists.next()){
                 update = con.Actualizar("administrador",
@@ -285,13 +289,14 @@ public class Administrador {
         }
     }
     
-    public boolean modificarUsuario(Alumno alumno){ // Se podrá modificar datos de un usuario.
+    public boolean modificarUsuario(Alumno alumno, String nivel_id){ // Se podrá modificar datos de un usuario.
         int update;
-        ResultSet exists = con.consultarSi("*", "alumno", "id", Integer.toString(alumno.getId()));
+        ResultSet exists = con.consultarSi("id", "alumno", "id", Integer.toString(alumno.getId()));
         try {
             if(exists.next()){
-                update = con.Actualizar("administrador",
-                            "login = \'" + alumno.getLogin()+ "\'" +
+                update = con.Actualizar("alumno",
+                            "nivel_id = \'" + nivel_id + "\'" +
+                            ",login = \'" + alumno.getLogin()+ "\'" +
                             ",clave = \'" + alumno.getContrasena()+ "\'" +
                             ",nombre = \'" + alumno.getNombre()+ "\'" +
                             ",apellidos = \'" + alumno.getApellidos()+ "\'",
@@ -316,7 +321,7 @@ public class Administrador {
     
     public boolean modificarUsuario(Profesor profesor){ // Se podrá modificar datos de un usuario.
         int update;
-        ResultSet exists = con.consultarSi("*", "profesor", "id", Integer.toString(profesor.getId()));
+        ResultSet exists = con.consultarSi("id", "profesor", "id", Integer.toString(profesor.getId()));
         try {
             if(exists.next()){
                 update = con.Actualizar("profesor",
@@ -381,8 +386,8 @@ public class Administrador {
         try {
             if (usuario.next()) {
                 id = usuario.getInt("id");
-                Contrasena = usuario.getString("email");
-                Email = usuario.getString("clave");
+                Contrasena = usuario.getString("clave");
+                Email = usuario.getString("email");
                 return new Administrador(id, login,Contrasena,Email, con);
             }else{
                 System.out.println("No existe administrador");
@@ -407,7 +412,9 @@ public class Administrador {
                 Contrasena = usuario.getString("clave");
                 Nombre = usuario.getString("nombre");
                 Apellidos = usuario.getString("apellidos");
-                return new Alumno(id, login, Contrasena, Nombre, Apellidos, con);
+                Alumno pivot = new Alumno(id, login, Contrasena, Nombre, Apellidos, con);
+                pivot.setNivel(usuario.getString("nivel_id"));
+                return pivot;
             }else{
                 System.out.println("No existe el alumno");
                 return new Alumno(0, " ", " ", " ", " ", con);
@@ -416,7 +423,7 @@ public class Administrador {
             System.out.println("Error al buscar alumno");
             System.out.println(ex);
             return new Alumno(0, " ", " ", " ", " ", con);
-    }
+        }
     }
     
     public Profesor buscarProfe(String login){

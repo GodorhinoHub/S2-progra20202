@@ -10,6 +10,7 @@ public class Alumno {
     private String Nombre;
     private String Apellidos;
     private OperacionesBD con;
+    private String Nivel;
 
     // Constructor
     public Alumno(int id, String Login, String Contrasena, String Nombre, String Apellidos, OperacionesBD con) {
@@ -27,7 +28,7 @@ public class Alumno {
         this.Nombre = Nombre;
         this.Apellidos = Apellidos;
         this.con = con;
-    } 
+    }
 
     // Getters
     public int getId() {
@@ -49,6 +50,14 @@ public class Alumno {
     public String getApellidos() {
         return Apellidos;
     }
+    
+    public String getNivel() {
+        return Nivel;
+    }
+
+    public OperacionesBD getCon() {    
+        return con;
+    }
 
     // Setters
     public void setId(int id) {
@@ -69,6 +78,10 @@ public class Alumno {
 
     public void setApellidos(String Apellidos) {
         this.Apellidos = Apellidos;
+    }
+
+    public void setNivel(String Nivel) {
+        this.Nivel = Nivel;
     }
     
     // Functions
