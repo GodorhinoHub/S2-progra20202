@@ -43,7 +43,6 @@ public class AlumnForm extends javax.swing.JFrame {
         listNotas = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         listDetalles = new javax.swing.JList<>();
-        buttonConsultarNotas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,8 +78,6 @@ public class AlumnForm extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(listDetalles);
 
-        buttonConsultarNotas.setText("Consultar");
-
         jLabel1.setText("Notas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,10 +105,6 @@ public class AlumnForm extends javax.swing.JFrame {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(labelNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonConsultarNotas)
-                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +129,7 @@ public class AlumnForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4)
                             .addComponent(jScrollPane3))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonConsultarNotas)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -180,7 +171,6 @@ public class AlumnForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonConsultarNotas;
     private javax.swing.JLabel consultarNotas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -199,10 +189,6 @@ public class AlumnForm extends javax.swing.JFrame {
     // Getters
     public JLabel getLabelNombreUsuario() {
         return labelNombreUsuario;
-    }
-
-    public JButton getButtonConsultarNotas() {
-        return buttonConsultarNotas;
     }
 
     public JList<String> getListAlumnos() {

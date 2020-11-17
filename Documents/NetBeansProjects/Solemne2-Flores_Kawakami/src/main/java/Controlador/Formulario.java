@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.*;
 import Vista.*;
 import java.awt.event.*;
+import javax.swing.event.*;
 
 public class Formulario implements ActionListener {
     private AdminForm adminForm;
@@ -71,8 +72,15 @@ public class Formulario implements ActionListener {
         alumnForm.getListAlumnos().setModel(alumn.listarAlumnosClase(alumn.getId()));
         alumnForm.getListProfesores().setModel(alumn.listarProfesores(alumn.getId()));
         alumnForm.getListNotas().setModel(alumn.listarNotas(alumn.getId()));
-        
-        alumnForm.getButtonConsultarNotas().addActionListener(this);
+        alumnForm.getListNotas().addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent arg0){
+                String asignatura = alumnForm.getListNotas().getSelectedValue();
+                String [] codigo = asignatura.split("-");
+                System.out.println(codigo[1]);
+                alumnForm.getListDetalles().setModel(alumn.listarDetalles(codigo[1],alumn.getId()));
+            }
+        });
     }
     
     private void abrirProfeForm(String nombreUsr){
@@ -84,8 +92,15 @@ public class Formulario implements ActionListener {
         
         profeForm.getListaProfesores().setModel(profe.listarProfesores());
         profeForm.getListaAsignaturas2().setModel(profe.listarAlumnos(profe.getId()));
-        
-        profeForm.getButtonRegistrarNotas().addActionListener(this);
+        profeForm.getListaAsignaturas2().addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent arg0){
+                String asignatura = profeForm.getListaAsignaturas2().getSelectedValue();
+                codigoAsign = asignatura.split("-");
+                System.out.println(codigoAsign[1]);
+                profeForm.getListaAlumnos2().setModel(profe.buscarAlumnos(codigoAsign[1]));
+            }
+        });
         profeForm.getButtonRegistrarNota().addActionListener(this);
     }
     
@@ -110,21 +125,7 @@ public class Formulario implements ActionListener {
                     this.adminForm.dispose();
                 }
                 break;
-            case "alumn":
-                if (ae.getSource() == alumnForm.getButtonConsultarNotas()) {
-                    String asignatura = alumnForm.getListNotas().getSelectedValue();
-                    String [] codigo = asignatura.split("-");
-                    System.out.println(codigo[1]);
-                    alumnForm.getListDetalles().setModel(alumn.listarDetalles(codigo[1],alumn.getId()));
-                }
-                break;
             case "profe":
-                if (ae.getSource() == profeForm.getButtonRegistrarNotas()) {
-                    String asignatura = profeForm.getListaAsignaturas2().getSelectedValue();
-                    codigoAsign = asignatura.split("-");
-                    System.out.println(codigoAsign[1]);
-                    profeForm.getListaAlumnos2().setModel(profe.buscarAlumnos(codigoAsign[1]));
-                }
                 if (ae.getSource() == profeForm.getButtonRegistrarNota()) {
                     String alumno = profeForm.getListaAlumnos2().getSelectedValue();
                     String [] codigoAlumn = alumno.split("-");

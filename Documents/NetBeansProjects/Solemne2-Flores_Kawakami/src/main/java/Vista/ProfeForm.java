@@ -42,7 +42,6 @@ public class ProfeForm extends javax.swing.JFrame {
         listaAsignaturas2 = new javax.swing.JList<>();
         jScrollPane5 = new javax.swing.JScrollPane();
         listaAlumnos2 = new javax.swing.JList<>();
-        buttonRegistrarNotas = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         fieldNota = new javax.swing.JTextField();
         buttonRegistrarNota = new javax.swing.JButton();
@@ -76,8 +75,6 @@ public class ProfeForm extends javax.swing.JFrame {
         jScrollPane4.setViewportView(listaAsignaturas2);
 
         jScrollPane5.setViewportView(listaAlumnos2);
-
-        buttonRegistrarNotas.setText("Buscar");
 
         jLabel4.setText("Nota");
 
@@ -134,10 +131,6 @@ public class ProfeForm extends javax.swing.JFrame {
                                         .addGap(22, 22, 22))))
                             .addComponent(jLabel3))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonRegistrarNotas)
-                .addGap(214, 214, 214))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,8 +158,7 @@ public class ProfeForm extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(buttonRegistrarNota)
                                 .addGap(18, 18, 18)
-                                .addComponent(labelNotaStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46))))
+                                .addComponent(labelNotaStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
@@ -175,8 +167,6 @@ public class ProfeForm extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addComponent(buttonRegistrarNotas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -224,7 +214,6 @@ public class ProfeForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonRegistrarNota;
-    private javax.swing.JButton buttonRegistrarNotas;
     private javax.swing.JTextField fieldNota;
     private javax.swing.JTextField fieldTrimestre;
     private javax.swing.JLabel jLabel1;
@@ -253,14 +242,6 @@ public class ProfeForm extends javax.swing.JFrame {
 
     public void setButtonRegistrarNota(JButton buttonRegistrarNota) {
         this.buttonRegistrarNota = buttonRegistrarNota;
-    }
-
-    public JButton getButtonRegistrarNotas() {
-        return buttonRegistrarNotas;
-    }
-
-    public void setButtonRegistrarNotas(JButton buttonRegistrarNotas) {
-        this.buttonRegistrarNotas = buttonRegistrarNotas;
     }
 
     public JTextField getFieldNota() {

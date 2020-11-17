@@ -49,6 +49,11 @@ public class IniciarSesion extends javax.swing.JFrame {
         Clave.setText("Clave:");
 
         buttonAceptar.setText("Iniciar Sesión");
+        buttonAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buttonAceptarKeyPressed(evt);
+            }
+        });
 
         fieldLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +114,10 @@ public class IniciarSesion extends javax.swing.JFrame {
     private void fieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldLoginActionPerformed
+
+    private void buttonAceptarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAceptarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAceptarKeyPressed
 
     /**
      * @param args the command line arguments

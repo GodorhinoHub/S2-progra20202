@@ -39,7 +39,7 @@ public class Controlador implements ActionListener{
     public boolean IniciarSesion(String login, String clave){
         if (login.equals("root") && clave.equals("toor")) {
             this.nombreUsr = "ROOT";
-            int id = 666;
+            int id = 1;
             String email = "root@colegio.com";
             this.form = new Formulario(new Administrador(id, login, clave, email, modelo));
             System.out.println(this.nombreUsr + " ha entrado al sistema!");
@@ -125,5 +125,4 @@ public class Controlador implements ActionListener{
             }
         }
     }
-    
 }

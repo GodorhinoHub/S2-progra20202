@@ -74,16 +74,16 @@ public class AdminVista implements ActionListener{
     // Listener Functions
     public void actionUsuario(ActionEvent ae){
         if (ae.getSource() == aUsuario.getButtonAlta()) {
-            aUsuario();
+            aUsuario.getLabelEstado().setText(aUsuario());
         }
         if (ae.getSource() == aUsuario.getButtonBuscar()) {
-            buUsuario();
+            aUsuario.getLabelEstado().setText(buUsuario());
         }
         if (ae.getSource() == aUsuario.getButtonBaja()) {
-            bUsuario();
+            aUsuario.getLabelEstado().setText(bUsuario());
         }
         if (ae.getSource() == aUsuario.getButtonModificar()) {
-            mUsuario();
+            aUsuario.getLabelEstado().setText(mUsuario());
         }
         
         if (ae.getSource() == aUsuario.getButtonReturn()) {
@@ -182,7 +182,9 @@ public class AdminVista implements ActionListener{
             aUsuario.getFieldApellidos().setText("");
             aUsuario.getFieldNivel().setText("");
             aUsuario.getFieldEspecialista().setText("");
-            
+            if (buscado.getId() != 0) {
+                return "Administrador encontrado";
+            }
         }
         if (aUsuario.getRadioAlumn().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
@@ -197,7 +199,9 @@ public class AdminVista implements ActionListener{
             aUsuario.getFieldNivel().setText(buscado.getNivel());
             aUsuario.getFieldEmail().setText("");
             aUsuario.getFieldEspecialista().setText("");
-            
+            if (buscado.getId() != 0) {
+                return "Alumno encontrado";
+            }
         }
         if (aUsuario.getRadioProfe().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
@@ -212,7 +216,9 @@ public class AdminVista implements ActionListener{
             aUsuario.getFieldEmail().setText(buscado.getEmail());
             aUsuario.getFieldEspecialista().setText(Integer.toString(buscado.getEspecialista()));
             aUsuario.getFieldNivel().setText("");
-            
+            if (buscado.getId() != 0) {
+                return "Profesor encontrado";
+            }
         }
         return "Ninguna operación hecha";
     }
