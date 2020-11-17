@@ -465,8 +465,8 @@ public class Administrador {
                 arr.add(usuario.getString("nombre"));
                 return arr;
             }else{
-                System.out.println("No existe el asignatura");
-                arr.add("");
+                System.out.println("No existe la asignatura");
+                arr.add("noA");
                 arr.add("");
                 arr.add("");
                 arr.add("");
@@ -475,7 +475,7 @@ public class Administrador {
         } catch (SQLException ex) {
             System.out.println("Error al buscar asignatura");
             System.out.println(ex);
-                arr.add("");
+                arr.add("errA");
                 arr.add("");
                 arr.add("");
                 arr.add("");

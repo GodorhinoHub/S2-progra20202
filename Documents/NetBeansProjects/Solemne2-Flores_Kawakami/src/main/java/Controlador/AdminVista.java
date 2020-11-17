@@ -87,6 +87,7 @@ public class AdminVista implements ActionListener{
         }
         
         if (ae.getSource() == aUsuario.getButtonReturn()) {
+            aUsuario.getLabelEstado().setText("Bye bye!");
             form = new Formulario(admin);
             form.abrirInterfaz();
             this.aUsuario.dispose();
@@ -95,19 +96,20 @@ public class AdminVista implements ActionListener{
     
     public void actionAsignatura(ActionEvent ae){
         if (ae.getSource() == aAsignatura.getButtonAlta()) {
-            aAsignatura();
+            aAsignatura.getLabelEstado().setText(aAsignatura());
         }
         if (ae.getSource() == aAsignatura.getButtonBuscar()) {
-            buAsignatura();
+            aAsignatura.getLabelEstado().setText(buAsignatura());
         }
         if (ae.getSource() == aAsignatura.getButtonBaja()) {
-            bAsignatura();
+            aAsignatura.getLabelEstado().setText(bAsignatura());
         }
         if (ae.getSource() == aAsignatura.getButtonModificar()) {
-            mAsignatura();
+            aAsignatura.getLabelEstado().setText(mAsignatura());
         }
         
         if (ae.getSource() == aAsignatura.getButtonReturn()) {
+            aAsignatura.getLabelEstado().setText("Bye bye!");
             form = new Formulario(admin);
             form.abrirInterfaz();
             this.aAsignatura.dispose();
@@ -116,10 +118,11 @@ public class AdminVista implements ActionListener{
     
     public void actionMalumno(ActionEvent ae){
         if (ae.getSource() == mAlumno.getButtonMatricular()) {
-            mAlumno();
+            mAlumno.getLabelEstado().setText(mAlumno());
         }
         
         if (ae.getSource() == mAlumno.getButtonReturn()) {
+            mAlumno.getLabelEstado().setText("Bye bye!");
             form = new Formulario(admin);
             form.abrirInterfaz();
             this.mAlumno.dispose();
@@ -127,13 +130,15 @@ public class AdminVista implements ActionListener{
     }
     
     // Operation Functions
-    public void aUsuario(){
+    public String aUsuario(){
         if (aUsuario.getRadioAdmin().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
             String clave = aUsuario.getFieldContrasena().getText();
             String email = aUsuario.getFieldEmail().getText();
             if (admin.altaUsuario(new Administrador(login,clave,email))) {
-                System.out.println("Admin agregado");
+                return "Admin agregado";
+            }else{
+                return "Usuario ya está agregado o tiene datos erróneos";
             }
         }
         if (aUsuario.getRadioAlumn().isSelected()) {
@@ -143,7 +148,9 @@ public class AdminVista implements ActionListener{
             String apellidos = aUsuario.getFieldApellidos().getText();
             String nivel = aUsuario.getFieldNivel().getText();
             if (admin.altaUsuario(new Alumno(login,clave,nombre,apellidos),nivel)) {
-                System.out.println("Alumno agregado");
+                return "Alumno agregado";
+            }else{
+                return "Alumno ya está agregado o tiene datos erróneos";
             }
         }
         if (aUsuario.getRadioProfe().isSelected()) {
@@ -154,17 +161,20 @@ public class AdminVista implements ActionListener{
             String email = aUsuario.getFieldEmail().getText();
             int especialista = Integer.parseInt(aUsuario.getFieldEspecialista().getText());
             if (admin.altaUsuario(new Profesor(login, clave, nombre, apellidos, email, especialista))) {
-                System.out.println("Profesor agregado");
+                return "Profesor agregado";
+            }else{
+                return "Profesor ya está agregado o tiene datos erróneos";
             }
         }
-        
-        
+        return "Ninguna operación hecha";
     }
-    public void buUsuario(){
+    public String buUsuario(){
         if (aUsuario.getRadioAdmin().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
             Administrador buscado = admin.buscarAdmin(login);
-            
+            if (buscado.getId() == 0) {
+                return "Administrador no encontrado";
+            }
             aUsuario.getFieldId().setText(Integer.toString(buscado.getId()));
             aUsuario.getFieldContrasena().setText(buscado.getContrasena());
             aUsuario.getFieldEmail().setText(buscado.getEmail());
@@ -177,7 +187,9 @@ public class AdminVista implements ActionListener{
         if (aUsuario.getRadioAlumn().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
             Alumno buscado = admin.buscarAlumn(login);
-            
+            if (buscado.getId() == 0) {
+                return "Alumno no encontrado";
+            }
             aUsuario.getFieldId().setText(Integer.toString(buscado.getId()));
             aUsuario.getFieldContrasena().setText(buscado.getContrasena());
             aUsuario.getFieldNombre().setText(buscado.getNombre());
@@ -190,7 +202,9 @@ public class AdminVista implements ActionListener{
         if (aUsuario.getRadioProfe().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
             Profesor buscado = admin.buscarProfe(login);
-            
+            if (buscado.getId() == 0) {
+                return "Profesor no encontrado";
+            }
             aUsuario.getFieldId().setText(Integer.toString(buscado.getId()));
             aUsuario.getFieldContrasena().setText(buscado.getContrasena());
             aUsuario.getFieldNombre().setText(buscado.getNombre());
@@ -200,15 +214,15 @@ public class AdminVista implements ActionListener{
             aUsuario.getFieldNivel().setText("");
             
         }
-        
-        
-        
+        return "Ninguna operación hecha";
     }
-    public void bUsuario(){
+    public String bUsuario(){
         if (aUsuario.getRadioAdmin().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
             Administrador buscado = admin.buscarAdmin(login);
-            
+            if (buscado.getId() == 0) {
+                return "Administrador no encontrado";
+            }
             aUsuario.getFieldId().setText(Integer.toString(buscado.getId()));
             aUsuario.getFieldContrasena().setText(buscado.getContrasena());
             aUsuario.getFieldEmail().setText(buscado.getEmail());
@@ -219,13 +233,17 @@ public class AdminVista implements ActionListener{
             int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar al usuario?", "Alerta!", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
                 admin.bajaUsuario(buscado.getId(), "administrador");
+                return "Administrador eliminado";
+            }else{
+                return "Administrador no eliminado";
             }
-            
         }
         if (aUsuario.getRadioAlumn().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
             Alumno buscado = admin.buscarAlumn(login);
-            
+            if (buscado.getId() == 0) {
+                return "Alumno no encontrado";
+            }
             aUsuario.getFieldId().setText(Integer.toString(buscado.getId()));
             aUsuario.getFieldContrasena().setText(buscado.getContrasena());
             aUsuario.getFieldNombre().setText(buscado.getNombre());
@@ -236,13 +254,17 @@ public class AdminVista implements ActionListener{
             int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar al usuario?", "Alerta!", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
                 admin.bajaUsuario(buscado.getId(), "alumno");
+                return "Alumno eliminado";
+            }else{
+                return "Alumno no eliminado";
             }
-            
         }
         if (aUsuario.getRadioProfe().isSelected()) {
             String login = aUsuario.getFieldLogin().getText();
             Profesor buscado = admin.buscarProfe(login);
-            
+            if (buscado.getId() == 0) {
+                return "Profesor no encontrado";
+            }
             aUsuario.getFieldId().setText(Integer.toString(buscado.getId()));
             aUsuario.getFieldContrasena().setText(buscado.getContrasena());
             aUsuario.getFieldNombre().setText(buscado.getNombre());
@@ -253,23 +275,24 @@ public class AdminVista implements ActionListener{
             int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar al usuario?", "Alerta!", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
                 admin.bajaUsuario(buscado.getId(), "profesor");
+                return "Profesor eliminado";
+            }else{
+                return "Profesor no eliminado";
             }
-            
         }
-        
-        
-        
+        return "Ninguna operación hecha";
     }
-    public void mUsuario(){
+    public String mUsuario(){
         if (aUsuario.getRadioAdmin().isSelected()) {
             int id = Integer.parseInt(aUsuario.getFieldId().getText());
             String login = aUsuario.getFieldLogin().getText();
             String clave = aUsuario.getFieldContrasena().getText();
             String email = aUsuario.getFieldEmail().getText();
             if (admin.modificarUsuario(new Administrador(id,login,clave,email,admin.getCon()))) {
-                System.out.println("Administrador modificado");
+                return "Administrador modificado";
+            }else{
+                return "Error al modificar, revise si los datos están correctos";
             }
-            
         }
         if (aUsuario.getRadioAlumn().isSelected()) {
             int id = Integer.parseInt(aUsuario.getFieldId().getText());
@@ -279,9 +302,10 @@ public class AdminVista implements ActionListener{
             String apellidos = aUsuario.getFieldApellidos().getText();
             String nivel = aUsuario.getFieldNivel().getText();
             if (admin.modificarUsuario(new Alumno(id,login,clave,nombre,apellidos,admin.getCon()),nivel)) {
-                System.out.println("Alumno modificado");
+                return "Alumno modificado";
+            }else{
+                return "Error al modificar, revise si los datos están correctos";
             }
-            
         }
         if (aUsuario.getRadioProfe().isSelected()) {
             int id = Integer.parseInt(aUsuario.getFieldId().getText());
@@ -292,40 +316,49 @@ public class AdminVista implements ActionListener{
             String email = aUsuario.getFieldEmail().getText();
             int especialista = Integer.parseInt(aUsuario.getFieldEspecialista().getText());
             if (admin.modificarUsuario(new Profesor(id,login, clave, nombre, apellidos, email, especialista,admin.getCon()))) {
-                System.out.println("Profesor modificado");
+                return "Profesor modificado";
+            }else{
+                return "Error al modificar, revise si los datos están correctos";
             }
-            
         }
-        
-        
-        
+        return "Ninguna operación hecha";
     }
     
-    public void aAsignatura(){
+    public String aAsignatura(){
         int id = Integer.parseInt(aAsignatura.getFieldId().getText());
         String nombre = aAsignatura.getFieldNombre().getText();
         String nivel = aAsignatura.getFieldNivel().getText();
         String profesor = aAsignatura.getFieldProfesor().getText();
         if (admin.altaAsignatura(new Asignatura(id,nombre),nivel,profesor)) {
-            System.out.println("Asignatura agregada");
+            return "Asignatura agregada";
+        }else{
+            return "Asignatura ya está agregada o tiene datos erróneos";
         }
-        
     }
-    public void buAsignatura(){
+    public String buAsignatura(){
         String id = aAsignatura.getFieldId().getText();
         ArrayList<String> buscado = admin.buscarAsignatura(id);
-            
+        if (buscado.get(0) == "noA") {
+            return "No existe la asignatura";
+        }
+        if (buscado.get(0) == "errA") {
+            return "Error al buscar asignatura";
+        }
         aAsignatura.getFieldId().setText(id);
         aAsignatura.getFieldNombre().setText(buscado.get(3));
         aAsignatura.getFieldNivel().setText(buscado.get(1));
         aAsignatura.getFieldProfesor().setText(buscado.get(2));
-            
-        
+        return "Asignatura encontrada";
     }
-    public void bAsignatura(){
+    public String bAsignatura(){
         String id = aAsignatura.getFieldId().getText();
         ArrayList<String> buscado = admin.buscarAsignatura(id);
-            
+        if (buscado.get(0) == "noA") {
+            return "No existe la asignatura";
+        }
+        if (buscado.get(0) == "errA") {
+            return "Error al buscar asignatura";
+        }
         aAsignatura.getFieldId().setText(id);
         aAsignatura.getFieldNombre().setText(buscado.get(3));
         aAsignatura.getFieldNivel().setText(buscado.get(1));
@@ -333,25 +366,30 @@ public class AdminVista implements ActionListener{
         int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro de querer eliminar la asignatura?", "Alerta!", JOptionPane.YES_NO_OPTION);
         if (resp == 0) {
             admin.bajaAsignatura(Integer.parseInt(id));
+            return "Asignatura eliminada";
+        }else{
+            return "Asignatura no eliminada";
         }
-        
     }
-    public void mAsignatura(){
+    public String mAsignatura(){
         int id = Integer.parseInt(aAsignatura.getFieldId().getText());
         String nombre = aAsignatura.getFieldNombre().getText();
         String nivel = aAsignatura.getFieldNivel().getText();
         String profesor = aAsignatura.getFieldProfesor().getText();
         if (admin.modificarAsignatura(new Asignatura(id,nombre),nivel,profesor)) {
-            System.out.println("Asignatura Modificada");
+            return "Asignatura Modificada";
+        }else{
+            return "Error al modificar, revise si los datos están correctos";
         }
-        
     }
     
-    public void mAlumno(){
+    public String mAlumno(){
         String alumno_id = mAlumno.getFieldId().getText();
         String asignatura_id = mAlumno.getFieldAsignatura().getText();
         if (admin.matricularAlumno(alumno_id,asignatura_id)) {
-            System.out.println("Alumno matriculado");
+            return "Alumno matriculado";
+        }else{
+            return "Alumno ya está matriculado o tiene datos erróneos";
         }
     }
     

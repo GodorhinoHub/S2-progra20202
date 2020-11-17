@@ -53,7 +53,7 @@ public class AltaAsignatura extends javax.swing.JFrame {
         labelNombreUsuario.setText("jLabel1");
 
         labelEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelEstado.setText("jLabel1");
+        labelEstado.setText("Bienvenido");
 
         buttonReturn.setText("<Volver");
 
